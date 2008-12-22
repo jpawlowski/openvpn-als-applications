@@ -1,0 +1,80 @@
+<bundle name="PuTTY Telnet"
+		id="adito-application-putty-portable-telnet"
+		license="MIT"
+		type="executable"
+		version="1.0.1"
+		requiredHostVersion="0.9.0"
+		productURL="http://socialistsushi.com/portaputty"
+		order="99999">
+		
+		<description>PuTTY is a free implementation of SSH for Win32, along with an xterm terminal emulator.</description>
+
+	<extension name="PuTTY Telnet"
+				extension="adito-application-putty-portable-telnet"
+				type="executable"
+				smallIcon="putty16x16.gif"
+				largeIcon="putty32x32.gif">
+			
+		<description>PuTTY is a free implementation of SSH for Win32, along with an xterm terminal emulator.</description>
+		
+		<parameter category="1" type="0" name="host" sortOrder="0"/> 
+		<parameter category="1" type="1" name="port" sortOrder="1" defaultValue="23"/> 
+		<parameter category="1" type="0" name="username" sortOrder="2" optional="true"/>
+
+		<parameter category="2" type="2" name="x11" sortOrder="0" optional="true" defaultValue="false"/> 
+	    <parameter category="2" type="0" name="x11display" sortOrder="1" optional="true" defaultValue=""/> 
+		
+		<parameter category="3" type="3" name="rfcEnviron" sortOrder="0" typeMeta="0,1" defaultValue="0"/>
+		<parameter category="3" type="3" name="passiveTelnet" sortOrder="1" typeMeta="0,1" defaultValue="1"/>
+		<parameter category="3" type="2" name="backspaceIsDelete" sortOrder="2"/>
+		<parameter category="3" type="2" name="rxvtHomeEnd" sortOrder="3" defaultValue="true"/>
+
+		<messages> 
+		    <message key="category.1.name">Connection</message>
+	      		<message key="username.name">Username</message>
+				<message key="host.name">Hostname</message> 
+				<message key="port.name">Port</message> 
+			
+			<message key="category.2.name">X11</message>
+				<message key="x11.name">Enable X11 Forwarding</message>
+				<message key="x11display.name">X11 Display</message>
+				
+			<message key="category.3.name">Telnet</message>
+				<message key="rfcEnviron.name">OLD_ENVIRON Handling</message>
+					<message key="rfcEnviron.description">Handling of OLD_ENVIRON ambiguity</message>
+					<message key="rfcEnviron.value.0">BSD (Commonplace)</message>
+					<message key="rfcEnviron.value.1">RFC 1408 (Unusual)</message>
+				<message key="passiveTelnet.name">Telnet Negotiation Mode</message>
+					<message key="passiveTelnet.value.0">Passive</message>
+					<message key="passiveTelnet.value.1">Active</message>
+				<message key="backspaceIsDelete.name">Telnet special keyboard commands</message>
+					<message key="backspaceIsDelete.description">Keyboard sends Telnet special commands</message>
+				<message key="rxvtHomeEnd.name">Return key sends Telnet New Line</message>
+					<message key="rxvtHomeEnd.description">Return key sends Telnet New Line instead of ^M</message>
+			
+		</messages> 
+
+		<files> 
+			<file>PuTTYPortable.exe</file> 
+			<file>DWORDTransformer.class</file> 
+			<file>App/putty/PUTTY.EXE</file> 
+			<file>Data/settings/template.reg</file>
+		</files> 
+		
+		<tunnel name="putty" hostname="${shortcut:host}" port="${shortcut:port}" usePreferredPort="false"/> 
+		
+		<transform class="DWORDTransformer" input="${tunnel:putty.port}" output="portDWORD"/>
+		<transform class="DWORDTransformer" input="${param:x11}" output="x11DWORD"/>
+		<transform class="DWORDTransformer" input="${param:rfcEnviron}" output="rfcEnvironDWORD"/>
+		<transform class="DWORDTransformer" input="${param:passiveTelnet}" output="passiveTelnetDWORD"/>
+		<transform class="DWORDTransformer" input="${param:backspaceIsDelete}" output="backspaceIsDeleteDWORD"/>
+		<transform class="DWORDTransformer" input="${param:rxvtHomeEnd}" output="rxvtHomeEndDWORD"/>
+		
+		<replacements templateFile="Data/settings/template.reg" outputFile="Data/settings/putty.reg" parameter="file" encoding="UTF8"/>
+		
+		<executable program="${client:installDir}/PuTTYPortable.exe">
+			<arg>-load</arg> 
+			<arg>${shortcut:host}</arg> 
+		</executable> 
+	</extension>
+</bundle>

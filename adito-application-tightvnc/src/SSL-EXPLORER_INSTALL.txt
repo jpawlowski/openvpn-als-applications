@@ -1,0 +1,2 @@
+To publish VNC as an SSL-Explorer application place the unzipped folder 'VNC' into the 
+$INSTALL_DIR/webapp/WEB-INF/applications folder and restart the SSL-Explorer service.

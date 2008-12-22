@@ -1,0 +1,212 @@
+<bundle version="1.0.5"
+		requiredHostVersion="0.9.0"
+		type="executable"
+		id="adito-application-ultravncproxy"
+		licenseAgreement="License.html"
+		name="UltraVNC Proxy"
+		license="GPL"
+		order="99999"
+		productURL="http://www.ultravnc.com/">
+		
+		<description>UltraVNC is an easy to use, fast and free software that can display the screen of another computer (via internet or network) on your own screen. The program allows you to use your mouse and keyboard to control the other PC remotely. This UltraVNC application can be used to create connection that require the use of a VNC Repeater.</description>
+	
+	<extension type="executable"
+				extension="adito-application-ultravncproxy"
+				name="UltraVNC Proxy"
+				smallIcon="UltraVNC16x16.jpg"
+				largeIcon="UltraVNC32x32.jpg">
+				
+		<description>UltraVNC is an easy to use, fast and free software that can display the screen of another computer (via internet or network) on your own screen. The program allows you to use your mouse and keyboard to control the other PC remotely. This UltraVNC application can be used to create connection that require the use of a VNC Repeater.</description>
+		
+		<parameter category="1" type="0" name="hostname" sortOrder="0"/>
+		<parameter type="1" category="1" name="port" sortOrder="1" defaultValue="5900"/>
+		<parameter type="4" category="1" name="password" sortOrder="2" optional="true"/>
+		<parameter type="0" category="1" name="proxyHost" sortOrder="3" optional="false"/>
+		<parameter type="1" category="1" name="proxyPort" sortOrder="4" defaultValue="5901" optional="false"/>
+
+		<parameter type="2" category="2" name="fullScreen" sortOrder="3" defaultValue="false" optional="true"/>
+		<parameter type="3" category="2" name="scale" sortOrder="3" typeMeta="autoScaling,4/1,3/1,2/1,1/1,3/4,1/2,1/4" defaultValue="autoScaling" optional="true"/>
+		<parameter type="2" category="2" name="viewOnly" sortOrder="4" defaultValue="false" optional="true"/>
+		<parameter type="2" category="2" name="noStatus" sortOrder="4" defaultValue="false" optional="true"/>
+		<parameter type="2" category="2" name="noHotKeys" sortOrder="4" defaultValue="false" optional="true"/>
+		<parameter type="2" category="2" name="noToolbar" sortOrder="4" defaultValue="false" optional="true"/>
+		<parameter type="3" category="2" name="cursor" sortOrder="4" typeMeta="noCursor,dotCursor,normalCursor" defaultValue="dotCursor" optional="true"/>
+
+		<parameter type="2" category="3" name="emulate3" sortOrder="4" defaultValue="true" optional="true"/> 
+		<parameter type="2" category="3" name="swapMouse" sortOrder="4" defaultValue="false" optional="true"/>
+
+		<parameter type="3" category="4" name="colours" sortOrder="3" typeMeta="auto,8bit,256colors,64colors,8colors,8greycolors,4greycolors,2greycolors" defaultValue="auto" optional="true"/>
+		<parameter type="3" category="4" name="encoding" sortOrder="3" typeMeta="none,raw,rre,corre,hextile,zlib,zlibhex,tight,ultra" defaultValue="none" optional="true"/>
+		<parameter type="3" category="4" name="compressLevel" sortOrder="3" typeMeta="none,1,2,3,4,5,6,7,8,9" defaultValue="none" optional="true"/>
+		<parameter type="2" category="4" name="disableClipboard" sortOrder="3" defaultValue="false" optional="true"/>
+		<parameter type="2" category="4" name="shareServer" sortOrder="3" defaultValue="false" optional="true"/>
+
+		<parameter type="3" category="5" name="logLevel" sortOrder="1" typeMeta="0,1,2,3,4,5,6,7,8,9,10" defaultValue="0" optional="true"/>
+		<parameter type="2" category="5" name="console" sortOrder="1" defaultValue="false" optional="true"/>
+
+		<messages>
+			<message key="category.1.name">General</message>
+			<message key="category.2.name">Display</message>
+			<message key="category.3.name">Mouse</message>
+			<message key="category.4.name">Protocol</message>
+			<message key="category.5.name">Advanced</message>
+
+			<message key="hostname.name">Hostname</message>
+			<message key="port.name">Port</message>
+			<message key="password.name">Password</message>
+			<message key="proxyHost.name">Proxy Hostname</message>
+			<message key="proxyPort.name">Proxy Port</message>
+			<message key="fullScreen.name">Full screen</message>
+
+			<message key="scale.name">Display Scale</message>
+				<message key="scale.value.autoScaling">Auto</message>
+				<message key="scale.value.4/1">400%</message>
+				<message key="scale.value.3/1">300%</message>
+				<message key="scale.value.2/1">200%</message>
+				<message key="scale.value.1/1">100%</message>
+				<message key="scale.value.3/4">75%</message>
+				<message key="scale.value.1/2">50%</message>
+				<message key="scale.value.1/4">25%</message>
+			<message key="viewOnly.name">View Only</message>
+			<message key="noStatus.name">Disable Status Bar</message>
+			<message key="noHotKeys.name">Disable Hot Keys</message>
+			<message key="noToolbar.name">Disable Toolbar</message>
+			<message key="cursor.name">Cursor Type</message>
+				<message key="cursor.value.noCursor">No Cursor</message>
+				<message key="cursor.value.dotCursor">Dot Cursor</message>
+				<message key="cursor.value.normalCursor">Normal Cursor</message>
+
+			<message key="emulate3.name">Emulate 3 button mouse (2 button click)</message>
+			<message key="swapMouse.name">Swap Mouse Buttons</message>
+
+			<message key="colours.name">Colour Scheme</message>
+				<message key="colours.value.auto">Auto</message>
+				<message key="colours.value.8bit">8 Bit</message>
+				<message key="colours.value.256colors">256 Colours</message>
+				<message key="colours.value.64colors">64 Colours</message>
+				<message key="colours.value.8colors">8 Colours</message>
+				<message key="colours.value.8greycolors">8 Grey Colours</message>
+				<message key="colours.value.4greycolors">4 Grey Colours</message>
+				<message key="colours.value.2greycolors">2 Grey Colours</message>
+			<message key="encoding.name">Encoding</message>
+				<message key="encoding.value.none">None</message>
+				<message key="encoding.value.raw">RAW</message>
+				<message key="encoding.value.rre">RRE</message>
+				<message key="encoding.value.corre">CORRE</message>
+				<message key="encoding.value.hextile">Hextile</message>
+				<message key="encoding.value.zlib">ZLIB</message>
+				<message key="encoding.value.zlibhex">ZLIBHex</message>
+				<message key="encoding.value.tight">Tight</message>
+				<message key="encoding.value.ultra">Ultra</message>
+			<message key="compressLevel.name">Compression Level</message>
+				<message key="compressLevel.value.none">None</message>
+				<message key="compressLevel.value.1">1</message>
+				<message key="compressLevel.value.2">2</message>
+				<message key="compressLevel.value.3">3</message>
+				<message key="compressLevel.value.4">4</message>
+				<message key="compressLevel.value.5">5</message>
+				<message key="compressLevel.value.6">6</message>
+				<message key="compressLevel.value.7">7</message>
+				<message key="compressLevel.value.8">8</message>
+				<message key="compressLevel.value.9">9</message>
+			<message key="disableClipboard.name">Do not transfer Clipboard contents</message>
+			<message key="shareServer.name">Share the Server with other viewers</message>
+
+			<message key="logLevel.name">Level of Logging</message>
+				<message key="logLevel.value.0">0 (Minimum)</message>
+				<message key="logLevel.value.1">1</message>
+				<message key="logLevel.value.2">2</message>
+				<message key="logLevel.value.3">3</message>
+				<message key="logLevel.value.4">4</message>
+				<message key="logLevel.value.5">5</message>
+				<message key="logLevel.value.6">6</message>
+				<message key="logLevel.value.7">7</message>
+				<message key="logLevel.value.8">8</message>
+				<message key="logLevel.value.9">9</message>
+				<message key="logLevel.value.10">10 (maximum)</message>
+			<message key="console.name">Output Console</message>
+		</messages>
+		
+		<files>
+			<file>vncviewer.exe</file>
+			<file>UnZip32.dll</file>
+			<file>Zip32.dll</file>
+		</files>
+
+		<tunnel name="vncviewer" hostname="${shortcut:proxyHost}" port="${shortcut:proxyPort}" usePreferredPort="false"/>
+
+		<executable program="${client:installDir}/vncviewer.exe">
+			<arg>${param:hostname}:${param:port}</arg>
+			<arg>-proxy</arg>
+			<arg>${tunnel:vncviewer.hostname}:${tunnel:vncviewer.port}</arg>
+
+			<if parameter="password" not="true" value="">
+				<arg>-password</arg>
+				<arg>${param:password}</arg>
+			</if>
+
+			<if parameter="fullScreen" value="true">
+				<arg>-fullscreen</arg>
+			</if>
+			<if parameter="scale" value="autoScaling">
+				<arg>-autoscaling</arg>
+			</if> 
+			<if parameter="scale" value="autoScaling" not="true">
+				<arg>-scale</arg>
+				<arg>${param:scale}</arg>
+			</if>
+			<if parameter="viewOnly" value="true">
+				<arg>-viewonly</arg>
+			</if>
+			<if parameter="noStatus" value="true">
+				<arg>-nostatus</arg>
+			</if>
+			<if parameter="noHotKeys" value="true">
+				<arg>-nohotkeys</arg>
+			</if>
+			<if parameter="noToolbar" value="true">
+				<arg>-notoolbar</arg>
+			</if>
+			<if parameter="cursor" value="dotCursor" not="true">
+				<arg>-${param:cursor}</arg>
+			</if>
+
+			<if parameter="emulate3" value="true">
+				<arg>-emulate3</arg>
+			</if>
+			<if parameter="emulate3" value="false">
+				<arg>-noemulate3</arg>
+			</if>
+			<if parameter="swapMouse" value="true">
+				<arg>-swapmouse</arg>
+			</if>
+
+			<if parameter="colours" value="auto" not="true">
+				<arg>-noauto</arg>
+				<arg>-${param:colours}</arg>
+			</if>
+			<if parameter="encoding" value="none" not="true">
+				<arg>-encoding</arg>
+				<arg>${param:encoding}</arg>
+			</if>
+			<if parameter="compressLevel" value="none" not="true">
+				<arg>-compresslevel</arg>
+		 		<arg>${param:compressLevel</arg>
+			</if>
+			<if parameter="disableClipboard" value="true">
+				<arg>-disableclipboard</arg>
+			</if>
+			<if parameter="shareServer" value="true">
+				<arg>-shared</arg>
+			</if>
+
+			<if parameter="logLevel" value="0" not="true">
+				<arg>-loglevel</arg>
+				<arg>${param:logLevel}</arg>
+			</if>
+			<if parameter="console" value="true">
+				<arg>-console</arg>
+			</if>
+		</executable>
+	</extension>
+</bundle>

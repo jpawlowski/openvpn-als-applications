@@ -1,0 +1,107 @@
+<bundle version="1.0.1"
+		type="java"
+		id="adito-application-tn5250j"
+		name="TN5250 AS/400 Terminal Emulator"
+		license="GPL"
+		order="99999"
+		requiredHostVersion="0.9.0"
+		productURL="http://tn5250j.sourceforge.net/">
+		
+		<description>An emulator allowing connections to AS/400 machines</description>
+		
+	<extension type="java"
+				extension="adito-application-tn5250j"
+				name="TN5250 AS/400 Terminal Emulator">
+		
+		<description>An emulator allowing connections to AS/400 machines</description>
+		
+		<parameter category="1" type="0" sortOrder="0" name="hostname"/>
+		<parameter category="1" type="1" sortOrder="1" name="port" defaultValue="23"/>
+		<parameter category="1" optional="true" type="0" sortOrder="2" name="filename"/>
+		<parameter category="1" optional="true" type="2" sortOrder="3" name="useSysName"/>
+		
+		<parameter category="2" optional="true" type="3" sortOrder="1" name="codePage" typeMeta="none,37,37PT,273,280,284,297,500,870" default="none"/>
+		<parameter category="2" optional="true" type="3" sortOrder="2" name="locale" typeMeta="none,es,de,fr,pt,ca_ES,nl,it,pl" default="none"/>
+		
+		<parameter category="3" optional="true" type="1" sortOrder="1" name="width"/>
+		<parameter category="3" optional="true" type="1" sortOrder="2" name="height"/>
+		<parameter category="3" optional="true" type="2" sortOrder="3" name="132"/>
+		
+		<messages>
+			<message key="category.1.name">Connection</message>
+				<message key="hostname.name">Hostname</message>
+				<message key="port.name">Port</message>
+				<message key="filename.name">Configuration file</message>
+				<message key="useSysName.name">Use System Name</message>
+				
+			<message key="category.2.name">Location</message>
+				<message key="codePage.name">Code Page</message>
+					<message key="codePage.value.none"></message>
+					<message key="codePage.value.37">37 - US Default</message>
+					<message key="codePage.value.37PT">37PT - Portuguese</message>
+					<message key="codePage.value.273">273 - German</message>
+					<message key="codePage.value.280">280 - Italian</message>
+					<message key="codePage.value.284">284 - Spanish</message>
+					<message key="codePage.value.297">297 - French</message>
+					<message key="codePage.value.500">500-ch - Switzerland</message>
+					<message key="codePage.value.870">870-pl - Poland</message>
+				
+				<message key="locale.name">Locale</message>
+					<message key="locale.value.none"></message>
+					<message key="locale.value.es">Spanish</message>
+					<message key="locale.value.de">German</message>
+					<message key="locale.value.fr">French</message>
+					<message key="locale.value.pt">Portuguese</message>
+					<message key="locale.value.ca_ES">Catalan</message>
+					<message key="locale.value.nl">Dutch</message>
+					<message key="locale.value.it">Italian</message>
+					<message key="locale.value.pl">Polish</message>
+				
+			<message key="category.3.name">Display</message>
+				<message key="width.name">Width</message>
+				<message key="height.name">Height</message>
+				<message key="132.name">Use 27*132 Column</message>
+		</messages>
+		
+		<tunnel name="tn5250j" hostname="${shortcut:hostname}" port="${shortcut:port}" usePreferredPort="false"/>
+		
+		<java jre="1.4">
+			<classpath>
+				<jar>tn5250j.jar</jar>
+			</classpath>
+			<main class="org.tn5250j.My5250">
+				<arg>${tunnel:tn5250j.hostname}</arg>
+				<arg>-p</arg>
+				<arg>${tunnel:tn5250j.port}</arg>
+				<if parameter="filename" not="true" value="">
+					<arg>-f</arg>
+					<arg>${param:filename}</arg>
+				</if>
+				<if parameter="filename" value="true">
+					<arg>-t</arg>
+				</if>				
+				
+				<if parameter="codePage" not="true" value="none">
+					<arg>-cp</arg>
+					<arg>${param:codePage}</arg>
+				</if>
+				<if parameter="locale" not="true" value="none">
+					<arg>-L</arg>
+					<arg>${param:locale}</arg>
+				</if>
+			
+				<if parameter="width" not="true" value="">
+					<arg>-width</arg>
+					<arg>${param:width}</arg>
+				</if>
+				<if parameter="height" not="true" value="">
+					<arg>-height</arg>
+					<arg>${param:height}</arg>
+				</if>
+				<if parameter="132" value="true">
+					<arg>-132</arg>
+				</if>
+			</main>
+		</java>
+	</extension>
+</bundle>

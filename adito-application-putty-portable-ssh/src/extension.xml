@@ -1,0 +1,140 @@
+<bundle name="PuTTY SSH"
+		id="adito-application-putty-portable-ssh"
+		license="MIT"
+		type="executable"
+		version="1.0.1"
+		requiredHostVersion="0.9.0"
+		order="99999"
+		productURL="http://socialistsushi.com/portaputty">
+		
+		<description>PuTTY is a free implementation of SSH for Win32, along with an xterm terminal emulator.</description>
+
+	<extension name="PuTTY SSH"
+				extension="adito-application-putty-portable-ssh"
+				type="executable"
+				smallIcon="putty16x16.gif"
+				largeIcon="putty32x32.gif">
+			
+		<description>PuTTY is a free implementation of SSH for Win32, along with an xterm terminal emulator.</description>
+		
+		<parameter category="1" type="0" name="host" sortOrder="0"/> 
+		<parameter category="1" type="1" name="port" sortOrder="1" defaultValue="22"/> 
+		<parameter category="1" type="0" name="username" sortOrder="2" optional="true"/>
+		
+		<parameter category="2" type="0" name="remoteCommand" sortOrder="0" optional="true"/>
+		<parameter category="2" type="2" name="sshNoShell" sortOrder="1" optional="true"/>
+		<parameter category="2" type="2" name="compression" sortOrder="2" optional="true"/>
+		<parameter category="2" type="3" name="sshProt" sortOrder="3" optional="true" typeMeta="0,1,2,3" default="2"/>
+		<!--parameter category="2" type="5" name="cipher" sortOrder="4" optional="true" typeMeta="aes,blowfish,3des,WARN,arcfour,des"/-->
+		<parameter category="2" type="2" name="ssh2DES" sortOrder="5" optional="true"/>
+		
+		<!--parameter category="3" type="5" name="kex" sortOrder="0" optional="true" typeMeta="dh-gex-sha1,dh-group14-sha1,dh-group1-sha1,WARN"/-->
+		<parameter category="3" type="1" name="rekeyTime" sortOrder="1" optional="true" default="60"/>
+		<parameter category="3" type="0" name="rekeyBytes" sortOrder="2" optional="true" default="1G"/>
+		
+		<parameter category="4" type="2" name="sshNoAuth" sortOrder="0" optional="true"/>
+		<parameter category="4" type="2" name="authTIS" sortOrder="2" optional="true"/>
+		<parameter category="4" type="2" name="authKI" sortOrder="3" optional="true" default="true"/>
+		<parameter category="4" type="2" name="agentFwd" sortOrder="4" optional="true"/>
+		<parameter category="4" type="2" name="changeUsername" sortOrder="5" optional="true"/>
+		<parameter category="4" type="0" name="publicKeyFile" sortOrder="6" optional="true"/>
+		
+		<parameter category="5" type="2" name="x11" sortOrder="0" optional="true" defaultValue="false"/> 
+	    <parameter category="5" type="0" name="x11display" sortOrder="1" optional="true" defaultValue=""/> 
+		
+		<parameter category="6" type="2" name="localPortAcceptAll" sortOrder="0" optional="true"/>
+		<parameter category="6" type="2" name="remotePortAcceptAll" sortOrder="1" optional="true"/>
+		<parameter category="6" type="6" name="portForwardings" sortOrder="2" typeMeta="10x5" optional="true"/>
+		
+
+		<messages> 
+		    <message key="category.1.name">Connection</message>
+				<message key="username.name">Username</message> 
+				<message key="host.name">Hostname</message> 
+				<message key="port.name">Port</message> 
+			
+			<message key="category.2.name">SSH</message>
+				<message key="remoteCommand.name">Remote Command</message>
+				<message key="sshNoShell.name">Don't start shell or command</message> 
+					<message key="sshNoShell.description">Will not start a shell or command at start-up</message>
+				<message key="compression.name">Enable Compression</message> 
+				<message key="sshProt.name">Preffered SSH protocol version</message>
+					<message key="sshProt.value.0">SSH-1 Only</message>
+					<message key="sshProt.value.1">SSH-1</message>
+					<message key="sshProt.value.2">SSH-2</message>
+					<message key="sshProt.value.3">SSH-2 Only</message>
+				<!-- message key="cipher.name">Encryption cipher selection policy</message>
+					<message key="cipher.value.aes">AES (SSH-2 only)</message>
+					<message key="cipher.value.blowfish">Blowfish</message>
+					<message key="cipher.value.3des">3DES</message>
+					<message key="cipher.value.WARN"> Warn Below Here </message>
+					<message key="cipher.value.arcfour">Arcfour (SSH-2 only)</message>
+					<message key="cipher.value.des">DES</message-->
+				<message key="ssh2DES.name">Enable single-DES in SSH-2</message> 			
+			
+			<message key="category.3.name">Kex</message>
+				<!--message key="kex.name">Kex algorithum selection policy</message>
+					<message key="kex.value.dh-gex-sha1">Diffie-Hellman group exchange</message>
+					<message key="kex.value.dh-group14-sha1">Diffie-Hellman group 14</message>
+					<message key="kex.value.dh-group1-sha1">Diffie-Hellman group 1</message>
+					<message key="sshProt.value.WARN"> Warn Below Here </message-->
+				<message key="rekeyTime.name">Max minutes for rekey</message> 
+					<message key="rekeyTime.description">Max minutes before rekey, 0 for no limit</message> 
+				<message key="rekeyBytes.name">Max data for rekey</message>
+					<message key="rekeyBytes.description">Max data before rekey, 0 for no limit (Use 1M for 1 megabyte, 1G for 1 gigabyte, etc)</message> 
+				
+			<message key="category.4.name">Auth</message>
+				<message key="sshNoAuth.name">Bypass authentication</message>
+					<message key="sshNoAuth.description">Bypasses authentication, only available for SSH-2</message>
+				<message key="authTIS.name">Attempt TIS/Cryptocard auth</message>
+					<message key="authTIS.description">Attempts to authenticate using TIS or Cryptocard, only available for SSH-1</message>
+				<message key="authKI.name">Attempt Keyboard Interactive auth</message>
+					<message key="authKI.description">Attempts to suthenticate using Keyboard Interactive authentication, only available for SSH-2</message>
+				<message key="agentFwd.name">Allow agent forwarding</message>
+				<message key="changeUsername.name">Allow change username</message>
+					<message key="changeUsername.description">Allows attempt to change username in use, only avaialbe in SSH-2</message>
+				<message key="publicKeyFile.name">Private key file for authentication</message>
+				
+	        <message key="category.5.name">X11</message>			
+				<message key="x11.name">Enable X11 Forwarding</message>
+				<message key="x11display.name">X11 Display</message>
+			
+			<message key="category.6.name">Tunnels</message>
+				<message key="localPortAcceptAll.name">Local port accepts all connections</message>
+					<message key="localPortAcceptAll.description">Local port accepts connections from other hosts</message>
+				<message key="remotePortAcceptAll.name">Remote port accepts all connections</message>
+					<message key="remotePortAcceptAll.description">Remote port accepts connections from other hosts</message>
+				<message key="portForwardings.name">Forwarded Ports</message>
+		</messages> 
+		
+		<files> 
+			<file>PuTTYPortable.exe</file> 
+			<file>DWORDTransformer.class</file> 
+			<file>App/putty/PUTTY.EXE</file> 
+			<file>Data/settings/template.reg</file>
+		</files> 
+		
+		<tunnel name="putty" hostname="${shortcut:host}" port="${shortcut:port}" usePreferredPort="false"/> 
+		
+		<transform class="DWORDTransformer" input="${tunnel:putty.port}" output="portDWORD"/>
+		<transform class="DWORDTransformer" input="${param:x11}" output="x11DWORD"/>
+		<transform class="DWORDTransformer" input="${param:sshNoShell}" output="sshNoShellDWORD"/>
+		<transform class="DWORDTransformer" input="${param:compression}" output="compressionDWORD"/>
+		<transform class="DWORDTransformer" input="${param:sshProt}" output="sshProtDWORD"/>
+		<transform class="DWORDTransformer" input="${param:rekeyTimet}" output="rekeyTimeDWORD"/>
+		<transform class="DWORDTransformer" input="${param:sshNoAuth}" output="sshNoAuthDWORD"/>
+		<transform class="DWORDTransformer" input="${param:authTIS}" output="authTISDWORD"/>
+		<transform class="DWORDTransformer" input="${param:authKI}" output="authKIDWORD"/>
+		<transform class="DWORDTransformer" input="${param:agentFwd}" output="agentFwdDWORD"/>
+		<transform class="DWORDTransformer" input="${param:changeUsername}" output="changeUsernameDWORD"/>
+		<transform class="DWORDTransformer" input="${param:localPortAcceptsAll}" output="localPortAcceptsAllDWORD"/>
+		<transform class="DWORDTransformer" input="${param:remotePortAcceptsAll}" output="remotePortAcceptsAllDWORD"/>
+		
+		<replacements templateFile="Data/settings/template.reg" outputFile="Data/settings/putty.reg" parameter="file" encoding="UTF8"/>
+		
+		<executable program="${client:installDir}/PuTTYPortable.exe">
+			<arg>-load</arg> 
+			<arg>${shortcut:host}</arg> 
+		</executable> 
+	</extension>
+</bundle>

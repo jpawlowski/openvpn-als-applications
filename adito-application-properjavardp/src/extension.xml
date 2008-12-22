@@ -1,0 +1,108 @@
+<bundle version="3.0.2"
+		requiredHostVersion="0.9"
+		type="java"
+		id="adito-application-properjavardp"
+		name="ProperJavaRDP application"
+		license="GPL"
+		order="99999"
+		productURL="http://properjavardp.sourceforge.net">
+		
+		<description>RDP is the remote access protocol that underpins Windows Terminal Services and Windows XP Remote Desktop Connection.</description>
+		
+	<extension type="java"
+				extension="adito-application-properjavardp"
+				name="ProperJavaRDP application">
+	
+			<description>RDP is the remote access protocol that underpins Windows Terminal Services and Windows XP Remote Desktop Connection.</description>
+			
+		<parameter type="0" sortOrder="0" name="hostname" validation="com.adito.input.validators.HostnameOrIPAddressWithReplacementsValidator"/>
+		<parameter type="1" sortOrder="1" name="port" defaultValue="3389"/>
+		<parameter type="0" optional="true" sortOrder="2" name="domain"/>
+		<parameter type="0" optional="true" sortOrder="3" name="username" defaultValue="${session:username}"/>
+		<parameter type="4" optional="true" sortOrder="4" name="password" defaultValue=""/>
+		<parameter type="2" optional="true" sortOrder="5" name="bandwidth" defaultValue="false"/>
+		<parameter type="2" optional="true" sortOrder="6" name="fullscreen" defaultValue="false"/>
+		<parameter type="1" optional="true" sortOrder="7" name="width" defaultValue="1024"/>
+		<parameter type="1" optional="true" sortOrder="8" name="height" defaultValue="768"/>
+		<parameter type="0" optional="true" sortOrder="9" name="keyboard" defaultValue="en-us"/>
+		<parameter type="0" optional="true" sortOrder="10" name="shell" defaultValue=""/>
+		
+		<messages>
+			<message key="hostname.name">Hostname</message>
+			<message key="domain.name">Domain</message>
+			<message key="port.name">Port</message>
+			<message key="username.name">Username</message>
+			<message key="password.name">Password</message>
+			<message key="width.name">Screen Width</message>
+			<message key="height.name">Screen Height</message>
+			<message key="bandwidth.name">Bandwidth Saving</message>
+			<message key="fullscreen.name">Fullscreen (Java 1.4+)</message>
+			<message key="keyboard.name">Keyboard</message>
+			<message key="shell.name">Start Program</message>
+		</messages>
+		
+		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" usePreferredPort="false" />
+		
+		<java jre="1.1">
+			<classpath>
+				<jar>properJavaRDP-1.1.jar</jar>
+				<jar>log4j-java1.1.jar</jar>
+				<jar>java-getopt-1.0.11.jar</jar>
+				<if jre="1.1">
+					<jar>properJavaRDP11-1.1.jar</jar>
+				</if>
+		 		<if jre="1.2">
+					<jar>properJavaRDP12-1.1.jar</jar>
+				</if>
+				<if jre="1.3">
+					<jar>properJavaRDP13-1.1.jar</jar>
+				</if>
+				<if jre="1.4">
+					<jar>properJavaRDP14-1.1.jar</jar>
+				</if>
+				<if jre="1.5">
+					<jar>properJavaRDP14-1.1.jar</jar>
+				</if>
+				<if jre="1.6">
+					<jar>properJavaRDP14-1.1.jar</jar>
+				</if>
+			</classpath>
+			
+			<main class="net.propero.rdp.Rdesktop">
+				<if parameter="bandwidth" value="true">
+					<arg>-b</arg>
+				</if>
+				<if parameter="fullscreen" value="true">
+					<arg>-f</arg>
+				</if>
+				<if parameter="fullscreen" not="true" value="true">
+	            	<arg>-g</arg>
+					<arg>${param:width}x${param:height}</arg>
+				</if>
+				<if parameter="keyboard" not="true" value="">
+					<arg>-m</arg>
+					<arg>${param:keyboard}</arg>
+				</if>
+				<if parameter="shell" not="true" value="">
+					<arg>-s</arg>
+					<arg>${param:shell}</arg>
+				</if>
+				<if parameter="domain" not="true" value="">
+					<arg>-d</arg>
+					<arg>${param:domain}</arg>
+				</if>
+				<if parameter="username" not="true" value="">
+					<arg>-u</arg>
+					<arg>${param:username}</arg>
+				</if>
+				<arg>-T</arg>
+				<arg>Connection to ${param:hostname} through SSL-Explorer</arg>
+				<if parameter="password" not="true" value="">
+					<arg>-p</arg>
+					<arg>${param:password}</arg>
+				</if>
+				<arg>${tunnel:rdp.hostname}:${tunnel:rdp.port}</arg>
+			</main>
+		</java>
+	</extension>
+</bundle>

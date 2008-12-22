@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-application-elusivajavardp" default="dist">
+
+        <!-- Standard build locations -->
+        <property name="build.src" value="src" />
+        <property name="output.file" value="adito-application-elusivajavardp.zip" />
+
+	<!-- Build the adito-application-elusivajavardp.zip -->
+	<target name="dist">
+		<zip destfile="${output.file}">
+			<zipfileset dir="${build.src}" prefix="adito-application-elusivajavardp">
+			</zipfileset>
+		</zip>
+	</target>
+
+</project>

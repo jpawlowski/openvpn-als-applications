@@ -1,0 +1,120 @@
+<bundle version="1.3.9"
+		requiredHostVersion="0.9.0"
+		type="java"
+		id="adito-application-tightvnc"
+		name="TightVNC (Java)"
+		license="GPL"
+		licenseAgreement="License.html"
+		order="99999"
+		productURL="http://www.tightvnc.com/">
+		
+		<description>VNC software makes it possible to view and fully-interact with one computer from any other computer or mobile device anywhere on the Internet.</description>
+		
+	<extension type="java"
+				extension="adito-application-tightvnc"
+				name="TightVNC (Java)"
+				smallIcon="vnc16x16.jpg"
+				largeIcon="vnc32x32.jpg">
+				
+		<description>VNC software makes it possible to view and fully-interact with one computer from any other computer or mobile device anywhere on the Internet.</description>
+		
+		<parameter type="0" sortOrder="0" name="hostname"/>
+		<parameter type="1" sortOrder="1" name="port" defaultValue="5900"/>
+		<parameter type="4" optional="true" sortOrder="2" name="password" defaultValue=""/>
+		<parameter type="2" optional="true" sortOrder="3" name="OpenNewWindow" defaultValue="true"/>
+		<parameter type="2" optional="true" sortOrder="4" name="RestrictedColors" defaultValue="true"/>
+		<parameter type="2" optional="true" sortOrder="5" name="ViewOnly" defaultValue="false"/>
+		<parameter type="2" optional="true" sortOrder="6" name="ShowControls" defaultValue="true"/>
+		<parameter type="2" optional="true" sortOrder="7" name="ShareDesktop" defaultValue="false"/>
+		<parameter type="1" optional="true" sortOrder="8" name="DeferScreenUpdates" defaultValue="20"/>
+		<parameter type="1" optional="true" sortOrder="9" name="DeferCursorUpdates" defaultValue="10"/>
+		<parameter type="1" optional="true" sortOrder="10" name="DeferUpdateRequests" defaultValue="50"/>
+		
+		<messages>
+			<message key="hostname.name">Hostname</message>
+			<message key="port.name">Port</message>
+			<message key="password.name">Password (CAUTION)</message>
+			<message key="OpenNewWindow.name">Operate in a separate window</message>
+			<message key="RestrictedColors.name">Restricted colors to 8 bits</message>
+			<message key="ViewOnly.name">View only</message>
+			<message key="ShowControls.name">Show Controls</message>
+			<message key="ShareDesktop.name">Share desktop</message>
+			<message key="DeferScreenUpdates.name">Defer screen updates (in ms)</message>
+			<message key="DeferCursorUpdates.name">Defer cursor updates (in ms)</message>
+			<message key="DeferUpdateRequests.name">Defer update requests (in ms)</message>
+		</messages>
+		
+		<tunnel name="vnc" hostname="${shortcut:hostname}" port="${shortcut:port}" usePreferredPort="false"/>
+		
+		<java jre="1.1">
+			<classpath>
+				<jar>VncViewer.jar</jar>
+			</classpath>
+			<main class="VncViewer">
+				<arg>HOST</arg>
+				<arg>${tunnel:vnc.hostname}</arg>
+				<arg>PORT</arg>
+				<arg>${tunnel:vnc.port}</arg>
+				<if parameter="password" not="true" value="">
+					<arg>password</arg>
+					<arg>${param:password}</arg>
+				</if>
+				
+				<arg>Open new window</arg>
+					<if parameter="OpenNewWindow" value="true">
+						<arg>Yes</arg>
+					</if>
+					<if parameter="OpenNewWindow" not="true" value="true">
+						<arg>No</arg>
+					</if>
+					
+				<arg>Restricted colors</arg>
+					<if parameter="RestrictedColors" value="true">
+						<arg>Yes</arg>
+					</if>
+					<if parameter="RestrictedColors" not="true" value="true">
+						<arg>No</arg>
+					</if>
+
+				<arg>View only</arg>
+					<if parameter="ViewOnly" value="true">
+						<arg>Yes</arg>
+					</if>
+					<if parameter="ViewOnly" not="true" value="true">
+						<arg>No</arg>
+					</if>
+					
+				<arg>Show controls</arg>
+					<if parameter="ShowControls" value="true">
+						<arg>Yes</arg>
+					</if>
+					<if parameter="ShowControls" not="true" value="true">
+						<arg>No</arg>
+					</if>
+					
+				<arg>Share desktop</arg>
+					<if parameter="ShareDesktop" value="true">
+						<arg>Yes</arg>
+					</if>
+					<if parameter="ShareDesktop" not="true" value="true">
+						<arg>No</arg>
+					</if>
+				
+				<if parameter="DeferScreenUpdates" not="true" value="">
+					<arg>Defer screen updates</arg>
+					<arg>${param:DeferScreenUpdates}</arg>
+				</if>
+				
+				<if parameter="DeferCursorUpdates" not="true" value="">
+					<arg>Defer cursor updates</arg>
+					<arg>${param:DeferCursorUpdates}</arg>
+				</if>
+				
+				<if parameter="DeferUpdateRequests" not="true" value="">
+					<arg>Defer update requests</arg>
+					<arg>${param:DeferUpdateRequests}</arg>
+				</if>
+			</main>
+		</java>
+	</extension>
+</bundle>

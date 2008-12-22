@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-application-winscp" default="dist">
+
+        <!-- Standard build locations -->
+        <property name="build.src" value="src" />
+        <property name="output.file" value="adito-application-winscp.zip" />
+
+	<!-- Build the adito-application-winscp.zip -->
+	<target name="dist">
+		<zip destfile="${output.file}">
+			<zipfileset dir="${build.src}" prefix="adito-application-winscp">
+			</zipfileset>
+		</zip>
+	</target>
+
+</project>

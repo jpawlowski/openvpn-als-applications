@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-application-putty-portable-ssh" default="dist">
+
+        <!-- Standard build locations -->
+        <property name="build.src" value="src" />
+        <property name="output.file" value="adito-application-putty-portable-ssh.zip" />
+
+	<!-- Build the adito-application-putty-portable-ssh.zip -->
+	<target name="dist">
+		<zip destfile="${output.file}">
+			<zipfileset dir="${build.src}" prefix="adito-application-putty-portable-ssh">
+			</zipfileset>
+		</zip>
+	</target>
+
+</project>

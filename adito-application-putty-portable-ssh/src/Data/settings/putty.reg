@@ -1,0 +1,7 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY]
+"RandSeedFile"="C:\\Documents and Settings\\ash\\Desktop\\sslexplorer-application-putty-portable-ssh\\Data\\settings\\PUTTY.RND"
+
+[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys]
+"rsa2@22:horsepower"="0x23,0xbfdbb69ee2d06aad880dc308bf11b3706b1411570867ef5573211111d0d99ab0c215a78c04391cc86c6cf0fbadd07de5c78927da62a52c573d71eb6c82fbeb6fb5aa31aee3b0dabef82ea48ebdc8981286a0f1875ff38bd9b1368d9cdf616a0943e99736c0f0ad11d363cb56d25e8d1f2f27118324a0547bc2d80f06a4238139"

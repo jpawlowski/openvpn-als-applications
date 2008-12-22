@@ -1,0 +1,131 @@
+<bundle version="1.0.0"
+		requiredHostVersion="0.9.0"
+		type="java"
+		id="adito-application-elusivajavardp"
+		name="Elusiva Java RDP"
+		license="GPL"
+		order="99999"
+		productURL="http://www.elusiva.com/opensource/">
+		
+		<description>Open Source Java RDP client for Windows Terminal Services is based on rdesktop, and properJavaRDP.</description>
+		
+	<extension type="java"
+				extension="adito-application-elusivajavardp"
+				name="Elusiva Java RDP">
+	
+			<description>Open Source Java RDP client for Windows Terminal Services is based on rdesktop, and properJavaRDP.</description>
+			
+		<parameter type="0" category="1" sortOrder="0" name="hostname" validation="com.adito.input.validators.HostnameOrIPAddressWithReplacementsValidator"/>
+		<parameter type="1" category="1" sortOrder="1" name="port" defaultValue="3389"/>
+		<parameter type="0" category="1" optional="true" sortOrder="2" name="domain"/>
+		<parameter type="0" category="1" optional="true" sortOrder="3" name="username" defaultValue="${session:username}"/>
+		<parameter type="4" category="1" optional="true" sortOrder="4" name="password" defaultValue="${session:password}"/>
+		<parameter type="3" category="2" optional="true" sortOrder="0" name="fullscreen" typeMeta="0,1,2"  defaultValue="0"/>
+		<parameter type="1" category="2" optional="true" sortOrder="1" name="width" defaultValue="1024"/>
+		<parameter type="1" category="2" optional="true" sortOrder="2" name="height" defaultValue="768"/>
+		<parameter type="1" category="2" optional="true" sortOrder="3" name="bpp" defaultValue=""/>
+		<parameter type="2" category="2" optional="true" sortOrder="4" name="bandwidth" defaultValue="false"/>
+		<parameter type="0" category="2" optional="true" sortOrder="5" name="keyboard" defaultValue="en-us"/>
+		<parameter type="0" category="2" optional="true" sortOrder="6" name="shell" defaultValue=""/>
+		<parameter type="2" category="2" optional="true" sortOrder="7" name="quietalt" defaultValue=""/>
+		<parameter type="2" category="2" optional="true" sortOrder="8" name="rdp4" defaultValue=""/>
+		
+		<messages>
+			<message key="category.1.name">General</message>
+			<message key="category.2.name">Options</message>
+			
+			<message key="hostname.name">Hostname</message>
+			<message key="port.name">Port</message>
+			<message key="domain.name">Domain</message>
+			<message key="username.name">Username</message>
+			<message key="password.name">Password</message>
+			<message key="bandwidth.name">Bandwidth Saving</message>
+			<message key="fullscreen.name">Authentication Level</message>
+				<message key="fullscreen.value.0">Windowed</message>
+				<message key="fullscreen.value.1">Full screen</message>
+				<message key="fullscreen.value.2">Full screen with KDE optimization</message>
+			<message key="width.name">Screen width</message>
+			<message key="height.name">Screen height</message>
+			<message key="bpp.name">Bits per pixel</message>
+			<message key="keyboard.name">Keyboard mapping file</message>
+			<message key="shell.name">Start Program</message>
+			<message key="quietalt.name">Enable quiet alt fix</message>
+			<message key="rdp4.name">Use RDP version 4</message>
+
+		</messages>
+		
+		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" usePreferredPort="false" />
+		
+		<java jre="1.1">
+			<classpath>
+				<if jre="1.1">
+					<jar>JavaRDP13-1.1.jar</jar>
+				</if>
+		 		<if jre="1.2">
+					<jar>JavaRDP13-1.1.jar</jar>
+				</if>
+				<if jre="1.3">
+					<jar>JavaRDP13-1.1.jar</jar>
+				</if>
+				<if jre="1.4">
+					<jar>JavaRDP14-1.1.jar</jar>
+				</if>
+				<if jre="1.5">
+					<jar>JavaRDP14-1.1.jar</jar>
+				</if>
+				<if jre="1.6">
+					<jar>JavaRDP14-1.1.jar</jar>
+				</if>
+			</classpath>
+			
+			<main class="com.elusiva.rdp.Rdesktop">
+				<if parameter="domain" not="true" value="">
+					<arg>-d</arg>
+					<arg>${param:domain}</arg>
+				</if>
+				<if parameter="username" not="true" value="">
+					<arg>-u</arg>
+					<arg>${param:username}</arg>
+				</if>
+				<if parameter="password" not="true" value="">
+					<arg>-p</arg>
+					<arg>${param:password}</arg>
+				</if>
+				<if parameter="bandwidth" value="true">
+					<arg>-b</arg>
+				</if>
+				<if parameter="fullscreen" value="1">
+					<arg>-f</arg>
+				</if>
+				<if parameter="fullscreen" value="2">
+					<arg>-fl</arg>
+				</if>
+				<if parameter="fullscreen" value="0">
+	            	<arg>-g</arg>
+					<arg>${param:width}x${param:height}</arg>
+				</if>
+				<if parameter="bpp" not="true" value="">
+					<arg>-b</arg>
+					<arg>${param:bpp}</arg>
+				</if>
+				<if parameter="keyboard" not="true" value="">
+					<arg>-m</arg>
+					<arg>${param:keyboard}</arg>
+				</if>
+				<if parameter="shell" not="true" value="">
+					<arg>-s</arg>
+					<arg>${param:shell}</arg>
+				</if>
+				<if parameter="quietalt" value="true">
+					<arg>--quiet_alt</arg>
+				</if>
+				<if parameter="rdp4" value="true">
+					<arg>--use_rdp4</arg>
+				</if>
+				<arg>-T</arg>
+				<arg>Connection to ${param:hostname} through Adito</arg>
+				<arg>${tunnel:rdp.hostname}:${tunnel:rdp.port}</arg>
+			</main>
+		</java>
+	</extension>
+</bundle>
