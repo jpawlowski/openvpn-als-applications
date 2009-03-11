@@ -1,5 +1,5 @@
 <bundle version="1.3.9"
-		requiredHostVersion="0.9.0"
+		requiredHostVersion="0.9.1"		
 		type="java"
 		id="adito-application-tightvnc"
 		name="TightVNC (Java)"
