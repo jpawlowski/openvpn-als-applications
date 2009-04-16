@@ -1,0 +1,70 @@
+<bundle version="1.0.1"
+		requiredHostVersion="0.9.0"
+		type="executable"
+		id="adito-application-winadvrdp"
+		name="Advanced Microsoft RDP Client"
+		license="GPL"
+		order="99999"
+		productURL="http://www.microsoft.com/">
+		
+	<description>RDP is the remote access protocol that underpins Windows Terminal Services and Windows Remote Desktop Connection.</description>
+
+	<extension type="executable" extension="adito-application-winadvrdp" name="Windows Advanced RDP Client" 
+smallIcon="winadvrdp16x16.png" largeIcon="winadvrdp32x32.png">
+		
+		<description>RDP is the remote access protocol that underpins Windows Terminal Services and Windows Remote Desktop Connection.</description>
+		
+		<!--	PARAMETERS TYPES AVAILABLE
+				    * 0 - Text
+					* 1 - Number
+					* 2 - Check box
+					* 3 - Dropdown list
+					* 4 - Password
+					* 5 - Editable list
+					* 6 - Text area
+		-->
+
+		<parameter category="1" type="0" name="hostname" sortOrder="0"/>
+		<parameter type="1" category="1" name="port" sortOrder="1" defaultValue="3389" optional="true"/>
+		<parameter type="3" category="2" name="screenmode" sortOrder="2" defaultValue="false" typeMeta="1,2" optional="true"/>
+		<parameter type="0" category="2" name="width" sortOrder="3" defaultValue="1024"/>
+		<parameter type="0" category="2" name="height" sortOrder="4" defaultValue="768"/>
+		
+		<messages>
+			<message key="category.1.name">General</message>
+			<message key="category.2.name">Display</message>
+			<message key="screenmode.name">Screen Mode</message>
+			<message key="screenmode.value.1">Normal</message>
+			<message key="screenmode.value.2">Fullscreen</message>
+			<message key="hostname.name">Hostname</message>
+			<message key="port.name">Port</message>
+			<message key="width.name">Screen Width</message>
+			<message key="height.name">Screen Height</message>
+		</messages>
+		
+		<files>
+			<file>Default.rdp</file>
+		</files>
+
+		<replacements templateFile="Default.rdp" parameter="file" encoding="US-ASCII"/>
+
+		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" usePreferredPort="false"/>
+
+		<executable program="mstsc.exe">
+			<arg>${param:file}</arg>
+
+			<arg>/v:</arg>
+			<arg>${tunnel:rdp.hostname}:${tunnel:rdp.port}</arg>
+			
+			<arg>/w:${param:width}</arg>
+			
+			<arg>/h:${param:height}</arg>
+			
+			<if parameter="screenmode" value="2">
+				<arg>/f</arg>
+			</if>
+			
+		</executable>
+
+	</extension>
+</bundle>
