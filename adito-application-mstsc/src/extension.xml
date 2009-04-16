@@ -1,0 +1,53 @@
+<bundle version="3.0.2"
+		requiredHostVersion="0.9"
+		type="executable"
+		id="adito-application-mstsc"
+		name="mstsc application"
+		license="GPL"
+		order="99999"
+		productURL="www.kevankay.com">
+		
+		<description>This application used the Microsoft Terminal Services client to connect to workstations and terminal servers.  MSTSC.exe must be in the path.</description>
+		
+	<extension type="executable"
+				extension="adito-application-mstsc"
+				name="MSTSC RDP client application">
+	
+			<description>This application used the Microsoft Terminal Services client to connect to workstations and terminal servers. MSTSC.exe must be in the path.</description>
+			
+		<parameter type="0" sortOrder="0" name="hostname" validation="com.adito.input.validators.HostnameOrIPAddressWithReplacementsValidator"/>
+		<parameter type="1" sortOrder="1" name="port" defaultValue="3389"/>
+		<parameter type="2" optional="true" sortOrder="2" name="fullscreen" defaultValue="false"/>
+		<parameter type="1" optional="true" sortOrder="3" name="width" defaultValue="1024"/>
+		<parameter type="1" optional="true" sortOrder="4" name="height" defaultValue="768"/>
+		<parameter type="2" optional="true" sortOrder="5" name="console" defaultValue="false"/>		
+				
+		<messages>
+			<message key="hostname.name">Hostname</message>
+			<message key="port.name">Port</message>
+			<message key="width.name">Screen Width</message>
+			<message key="height.name">Screen Height</message>
+			<message key="fullscreen.name">Fullscreen</message>
+			<message key="console.name">Login to console?</message>
+		</messages>
+		
+		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" usePreferredPort="false" />
+		
+		<executable program="mstsc.exe"> 
+		        <arg>/v:${tunnel:rdp.hostname}:${tunnel:rdp.port}</arg> 
+		        <if parameter="fullscreen" value="true"> 
+				<arg>/f</arg> 
+			</if> 
+			<if parameter="console" value="true"> 
+				<arg>/console</arg> 
+			</if>
+			<if parameter="width" not="true" value=""> 
+				<arg>/w:${param:width}</arg> 
+			</if> 
+			<if parameter="height" not="true" value=""> 
+				<arg>/w:${param:height}</arg> 
+			</if> 
+                </executable> 
+		
+	</extension>
+</bundle>

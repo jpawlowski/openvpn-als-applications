@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-application-mstsc" default="dist">
+
+        <!-- Standard build locations -->
+        <property name="build.src" value="src" />
+        <property name="output.file" value="adito-application-mstsc.zip" />
+
+	<!-- Build  -->
+	<target name="dist">
+		<zip destfile="${output.file}">
+			<zipfileset dir="${build.src}" prefix="adito-application-mstsc">
+			</zipfileset>
+		</zip>
+	</target>
+
+</project>
