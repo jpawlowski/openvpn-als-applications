@@ -3,7 +3,7 @@
 		type="executable"
 		id="adito-application-winadvrdp"
 		name="Advanced Microsoft RDP Client"
-		license="GPL"
+		license="GPLv2"
 		order="99999"
 		productURL="http://www.microsoft.com/">
 		
