@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="adito-application-nativerdp" default="dist">
+<project name="adito-application-ultravnc" default="dist">
 
         <!-- Standard build locations -->
         <property name="build.src" value="src" />
-        <property name="output.file" value="adito-application-nativerdp.zip" />
+        <property name="output.file" value="adito-application-ultravnc.zip" />
 
-        <!-- Build the adito-application-nativerdp.zip -->
+        <!-- Build the adito-application-ultravnc.zip -->
         <target name="dist">
                 <zip destfile="${output.file}">
-                        <zipfileset dir="${build.src}" prefix="adito-application-nativerdp">
+                        <zipfileset dir="${build.src}" prefix="adito-application-ultravnc">
                         </zipfileset>
                 </zip>
         </target>
