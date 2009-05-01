@@ -1,0 +1,74 @@
+<bundle version="2.0.1"
+		requiredHostVersion="0.9.0"
+		type="executable"
+		id="adito-application-nativerdp"
+		name="nativerdp"
+		license="GPL"
+		order="99999"
+		productURL="http://www.microsoft.com/">
+		
+	<description>Execute Native Windows RDP Client MSTSC.EXE</description>
+
+	<extension type="executable" extension="adito-application-nativerdp" name="nativerdp" smallIcon="mstscicon15x15.jpeg" largeIcon="mstscicon32x32.jpeg">
+		
+		<description>Execute Native Windows RDP Client MSTSC.EXE</description>
+		
+		<parameter name="hostname" category="1" sequence="0" type="0"/>
+		<parameter name="port" category="1" sequence="1" type="1" default="3389" optional="true"/>
+		<parameter name="username" category="1" sequence="2" type="0" optional="true"/>
+		<parameter name="domain" category="1" sequence="3" type="0" optional="true"/>
+		<parameter name="screenmode" category="2" sequence="0" type="3" typeMeta="1,2" default="1" optional="true"/>
+		<parameter name="width" category="2" sequence="1" type="1" default="1024" optional="true"/>
+		<parameter name="height" category="2" sequence="2" type="1" default="768" optional="true"/>
+		<parameter name="bpp" category="2" sequence="3" type="3" typeMeta="8,15,16,24" default="16" optional="true"/> 
+		<parameter name="redirectdrives" category="3" sequence="0" type="3" typeMeta="0,1" default="0" optional="true"/>
+		<parameter name="redirectprinters" category="3" sequence="1" type="3" typeMeta="0,1" default="0" optional="true"/>
+		<parameter name="redirectsmartcards" category="3" sequence="2" type="3" typeMeta="0,1" default="0" optional="true"/>
+
+		<--
+		There are Many more options available to specify in RDP. The Default.rdp would need to be modified
+		along with this xml config file to add the other options to it.
+		-->
+
+		<messages>
+			<message key="category.1.name">General</message>
+			<message key="category.2.name">Display</message>
+			<message key="category.3.name">Local Resources</message> 
+			<message key="hostname.name">Hostname</message>
+			<message key="port.name">Port</message>
+			<message key="username.name">Username</message>
+			<message key="domain.name">Domain</message>
+			<message key="screenmode.name">Screen Mode</message>
+			<message key="screenmode.value.1">Normal</message>
+			<message key="screenmode.value.2">Fullscreen</message>
+			<message key="width.name">Width</message>
+			<message key="height.name">Height</message>
+			<message key="bpp.name">Colors</message>
+			<message key="bpp.value.8">256 Colors</message>
+			<message key="bpp.value.15">High Color (15 bit)</message>
+			<message key="bpp.value.16">High Color (16 bit)</message>
+			<message key="bpp.value.24">True Color (24 bit)</message>
+			<message key="redirectdrives.name">Redirect disk drives</message>
+			<message key="redirectdrives.value.0">No</message>
+			<message key="redirectdrives.value.1">Yes</message>
+			<message key="redirectprinters.name">Redirect Local Printers</message>
+			<message key="redirectprinters.value.0">No</message>
+			<message key="redirectprinters.value.1">Yes</message>
+			<message key="redirectsmartcards.name">Redirect Smart Cards</message>
+			<message key="redirectsmartcards.value.0">No</message>
+			<message key="redirectsmartcards.value.1">Yes</message>
+		</messages> 
+		
+		<files>
+			<file>Default.rdp</file>
+		</files>
+
+		<replacements templateFile="Default.rdp" parameter="file" encoding="US-ASCII"/>
+
+		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" singleConnection="false" usePreferredPort="false"/>
+
+		<executable program="mstsc.exe">
+			<arg>${param:file}</arg>
+		</executable>
+	</extension>
+</bundle>
