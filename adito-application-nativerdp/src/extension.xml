@@ -25,11 +25,6 @@
 		<parameter name="redirectprinters" category="3" sequence="1" type="3" typeMeta="0,1" default="0" optional="true"/>
 		<parameter name="redirectsmartcards" category="3" sequence="2" type="3" typeMeta="0,1" default="0" optional="true"/>
 
-		<--
-		There are Many more options available to specify in RDP. The Default.rdp would need to be modified
-		along with this xml config file to add the other options to it.
-		-->
-
 		<messages>
 			<message key="category.1.name">General</message>
 			<message key="category.2.name">Display</message>
