@@ -17,7 +17,7 @@
 		<parameter name="port" category="1" sequence="1" type="1" default="3389" optional="true"/>
 		<parameter name="username" category="1" sequence="2" type="0" optional="true"/>
 		<parameter name="domain" category="1" sequence="3" type="0" optional="true"/>
-		<parameter name="screenmode" category="2" sequence="0" type="3" typeMeta="1,2" default="1" optional="true"/>
+		<parameter name="screenmode" category="2" sequence="0" type="3" typeMeta="0,1" default="1" optional="true"/>
 		<parameter name="width" category="2" sequence="1" type="1" default="1024" optional="true"/>
 		<parameter name="height" category="2" sequence="2" type="1" default="768" optional="true"/>
 		<parameter name="bpp" category="2" sequence="3" type="3" typeMeta="8,15,16,24" default="16" optional="true"/> 
@@ -35,7 +35,7 @@
 			<message key="domain.name">Domain</message>
 			<message key="screenmode.name">Screen Mode</message>
 			<message key="screenmode.value.1">Normal</message>
-			<message key="screenmode.value.2">Fullscreen</message>
+			<message key="screenmode.value.0">Fullscreen</message>
 			<message key="width.name">Width</message>
 			<message key="height.name">Height</message>
 			<message key="bpp.name">Colors</message>
