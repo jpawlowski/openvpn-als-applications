@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-application-nativerdp" default="dist">
+
+        <!-- Standard build locations -->
+        <property name="build.src" value="src" />
+        <property name="output.file" value="adito-application-nativerdp.zip" />
+
+        <!-- Build the adito-application-nativerdp.zip -->
+        <target name="dist">
+                <zip destfile="${output.file}">
+                        <zipfileset dir="${build.src}" prefix="adito-application-nativerdp">
+                        </zipfileset>
+                </zip>
+        </target>
+
+</project>
+
