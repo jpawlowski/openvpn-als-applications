@@ -63,7 +63,7 @@
 		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" singleConnection="false" usePreferredPort="false"/>
 
 		<executable program="open">
-			<arg>-a "/Applications/Remote Desktop Connection.app" ${param:file}</arg>
+			<arg>-a /Applications/Remote\ Desktop\ Connection.app ${param:file}</arg>
 		</executable>
 	</extension>
 </bundle>
