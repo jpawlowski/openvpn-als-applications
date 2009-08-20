@@ -1,0 +1,150 @@
+This is the basis for the JICAComponents Adito/ALS application. Due to
+distribution restrictions you need to fetch the Citrix JICA files yourself.
+After adding the missing (JAR) files, repackage the application with "ant" -
+you need to have Apache Ant installed.
+
+The original, functional JICAComponents application had these
+files, though most of those are probably not necessary:
+
+
+.
+|-- EULA_de.txt
+|-- EULA_en.txt
+|-- EULA_es.txt
+|-- EULA_fr.txt
+|-- EULA_ja.txt
+|-- ICAPrinterDrivers.txt
+|-- JICA-audioN.jar
+|-- JICA-browseN.jar
+|-- JICA-cdmN.jar
+|-- JICA-clipboardN.jar
+|-- JICA-configN.jar
+|-- JICA-coreN.jar
+|-- JICA-printerN.jar
+|-- JICA-seamlessN.jar
+|-- JICA-sicaN.jar
+|-- JICA-zlcN.jar
+|-- JICAEngN.jar
+|-- README_de.html
+|-- README_en.html
+|-- README_es.html
+|-- README_fr.html
+|-- README_ja.html
+|-- close.html
+|-- cryptojN.jar
+|-- examples
+|   |-- application.html
+|   |-- autoproxy.html
+|   |-- desktop.html
+|   |-- end.html
+|   |-- index.html
+|   |-- seamless1.html
+|   |-- seamless2.html
+|   `-- seamless3.html
+|-- extension.xml
+|-- help
+|   |-- de
+|   |   |-- Alternate.html
+|   |   |-- AutoProxy.html
+|   |   |-- BitmapCache.html
+|   |   |-- ClientDriveMapping.html
+|   |   |-- ClientSettings.html
+|   |   |-- ConnectionCenter.html
+|   |   |-- FirewallSettings.html
+|   |   |-- General.html
+|   |   |-- Hotkeys.html
+|   |   |-- J2Autodetprinter.html
+|   |   |-- J2BitmapCache.html
+|   |   |-- J2ClientDriveMapping.html
+|   |   |-- J2Manualprinter.html
+|   |   |-- J2NewDrive.html
+|   |   |-- J2PrinterMapping.html
+|   |   |-- ManualProxy.html
+|   |   |-- NewDrive.html
+|   |   |-- PrinterAddMod.html
+|   |   `-- PrinterMapping.html
+|   |-- en
+|   |   |-- Alternate.html
+|   |   |-- AutoProxy.html
+|   |   |-- BitmapCache.html
+|   |   |-- ClientDriveMapping.html
+|   |   |-- ClientSettings.html
+|   |   |-- ConnectionCenter.html
+|   |   |-- FirewallSettings.html
+|   |   |-- General.html
+|   |   |-- Hotkeys.html
+|   |   |-- J2Autodetprinter.html
+|   |   |-- J2BitmapCache.html
+|   |   |-- J2ClientDriveMapping.html
+|   |   |-- J2Manualprinter.html
+|   |   |-- J2NewDrive.html
+|   |   |-- J2PrinterMapping.html
+|   |   |-- ManualProxy.html
+|   |   |-- NewDrive.html
+|   |   |-- PrinterAddMod.html
+|   |   `-- PrinterMapping.html
+|   |-- es
+|   |   |-- Alternate.html
+|   |   |-- AutoProxy.html
+|   |   |-- BitmapCache.html
+|   |   |-- ClientDriveMapping.html
+|   |   |-- ClientSettings.html
+|   |   |-- ConnectionCenter.html
+|   |   |-- FirewallSettings.html
+|   |   |-- General.html
+|   |   |-- Hotkeys.html
+|   |   |-- J2Autodetprinter.html
+|   |   |-- J2BitmapCache.html
+|   |   |-- J2ClientDriveMapping.html
+|   |   |-- J2Manualprinter.html
+|   |   |-- J2NewDrive.html
+|   |   |-- J2PrinterMapping.html
+|   |   |-- ManualProxy.html
+|   |   |-- NewDrive.html
+|   |   |-- PrinterAddMod.html
+|   |   `-- PrinterMapping.html
+|   |-- fr
+|   |   |-- Alternate.html
+|   |   |-- AutoProxy.html
+|   |   |-- BitmapCache.html
+|   |   |-- ClientDriveMapping.html
+|   |   |-- ClientSettings.html
+|   |   |-- ConnectionCenter.html
+|   |   |-- FirewallSettings.html
+|   |   |-- General.html
+|   |   |-- Hotkeys.html
+|   |   |-- J2Autodetprinter.html
+|   |   |-- J2BitmapCache.html
+|   |   |-- J2ClientDriveMapping.html
+|   |   |-- J2Manualprinter.html
+|   |   |-- J2NewDrive.html
+|   |   |-- J2PrinterMapping.html
+|   |   |-- ManualProxy.html
+|   |   |-- NewDrive.html
+|   |   |-- PrinterAddMod.html
+|   |   `-- PrinterMapping.html
+|   `-- ja
+|       |-- Alternate.html
+|       |-- AutoProxy.html
+|       |-- BitmapCache.html
+|       |-- ClientDriveMapping.html
+|       |-- ClientSettings.html
+|       |-- ConnectionCenter.html
+|       |-- FirewallSettings.html
+|       |-- General.html
+|       |-- Hotkeys.html
+|       |-- J2Autodetprinter.html
+|       |-- J2BitmapCache.html
+|       |-- J2ClientDriveMapping.html
+|       |-- J2Manualprinter.html
+|       |-- J2NewDrive.html
+|       |-- J2PrinterMapping.html
+|       |-- JapaneseHotkeys.html
+|       |-- ManualProxy.html
+|       |-- NewDrive.html
+|       |-- PrinterAddMod.html
+|       `-- PrinterMapping.html
+|-- sslN.jar
+`-- version.dat
+
+7 directories, 131 files
