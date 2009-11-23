@@ -1,0 +1,49 @@
+﻿<html lang="en-US" xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:macua="http://ns.microsoft.com/macua" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:macuaXT="urn:macua/XT"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="assetID" content="2aae839c-7f91-4738-aea7-9ffb25dbfe2e" /><title>I can't copy and paste between computers </title><link rel="stylesheet" type="text/css" href="map/MacOffice.css" /><link rel="stylesheet" type="text/css" href="map/MacOffice1.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice2.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice3.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice4.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOfficePrnt.css" /><style type="text/css">
+					.alertHeadImp { background:#FFFFFF url(map/important_bg.gif) no-repeat; }
+					.alertHeadCau { background:#FFFFFF url(map/caution_bg.gif) no-repeat; }
+					.header { background:#CCCCCC url(map/gray_bar.gif); }
+					.footer { background:#CCCCCC url(map/gray_bar.gif); }
+					.termdiv { background:#FFFFFF url(map/blue_bar.gif); }
+					</style><script type="text/javascript">
+	var uiArtFolder = 'map/';
+	var showText = 'Show All';
+	var hideText = 'Hide All';
+				</script><script type="text/javascript" src="map/MacOffice.js">';</script></head><body onclick="hide()" onload="init()"><div id="main" class="main"><div id="header" class="header"><p style="padding-top:2px;" /></div><div class="title"><h1 style="font-size:14pt;">I can't copy and paste between computers </h1><div class="divShowHideAll" align="right"><table id="showHideTable" class="showAll" cellpadding="0" cellspacing="0" border="0" align="right" style="display:none;"><tr onclick="showHideAll(this)"><td class="showAllArrow" style="padding-top:1;"><img src="map/triangle_closed.gif" align="left" /></td><td id="showHideAll" class="showAllText" width="*" onmouseover="hilite(this)" onmouseout="unhilite(this)">Show All</td></tr></table></div></div><div class="content"><p style="margin-top:6;"><span class="bold">Cause: </span>Some clipboard formats cannot be pasted.</p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">Solution: </span>Copy the text into an intermediate program that has a compatible clipboard format.</td></tr></table></div><div class="ind" style="display:none;"><h5>Copy from a Windows-based computer and paste to the Mac</h5><div class="proc"><ol><li> 
+					<p>On the Windows-based computer, copy the text that you want.</p>
+				</li><li> 
+					<p>On the Mac, open TextEdit and paste the text. </p>
+				</li><li> 
+					<p>Copy the text from TextEdit, and then paste it into the file that you want.</p>
+				</li></ol></div><h5>Copy from the Mac and paste to a Windows-based computer</h5><div class="proc"><ol><li> 
+					<p>On the Mac, copy the text that you want.</p>
+				</li><li> 
+					<p>On the Windows-based computer, open Notepad or Wordpad, and then paste the text.</p>
+				</li><li> 
+					<p>Copy the text from Notepad or Wordpad, and then paste it into the file that you want.</p>
+				</li></ol></div></div></div><p style="margin-top:6;"><span class="bold">Cause: </span>The file is inaccessible from the Windows-based computer. </p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">Solution: </span>Before you start the Remote Desktop session, make the Mac disks available to the Windows-based computer.</td></tr></table></div><div class="ind" style="display:none;"><div class="proc"><ol><li> 
+					<p>On the <span class="bold">RDC</span> menu, click <span class="bold">Preferences</span>.</p>
+				</li><li> 
+					<p>Click <span class="bold">Drives</span>, and then on the pop-up menu, select the option that you want. </p>
+					<p>Your disk or folder is now available so that you can access files that are on your Mac from the Windows-based computer.</p>
+					<p>If you make this change after you connect, the disk or folder that you select becomes available the next time that you connect.</p>
+				</li><li> 
+					<p>On the <span class="bold">Start</span> menu, click <span class="bold">Computer</span> or <span class="bold">My Computer</span>.</p>
+					<p>The Mac disk or folder that you have made available is listed with all other disks and folders on your Windows-based computer. </p>
+					<div class="alert2"><p><span class="note">Note </span>If you can't see the <span class="bold">Start</span> menu, on the <span class="bold">View</span> menu, click <span class="bold">Full Screen</span>.To return to window mode later, point to the top edge of the screen until the RDC menu bar appears. On the menu bar, click <span class="bold">View</span>, and then clear the <span class="bold">Full Screen</span> check box.</p> 
+							
+						</div> 
+				</li><li> 
+					<p>Open the disk or folder that you want to copy from.</p>
+				</li><li> 
+					<p>On the <span class="bold">Start</span> menu, click <span class="bold">Computer</span> or <span class="bold">My Computer</span>.</p>
+				</li><li> 
+					<p>Open the disk or folder that you want to copy to.</p>
+					<p>You should now have two windows open, one for the location that you want to copy from, and one for the location that you want to copy to.</p>
+				</li><li> 
+					<p>Drag the document that you want to copy to the location that you want.</p>
+				</li></ol></div></div></div><p style="margin-top:6;"><span class="bold">Cause: </span>Terminal Services Group Policy does not allow drive sharing.
+</p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">Solution: </span>Contact the network administrator about your Terminal Services Group Policy.</td></tr></table></div><div class="ind" style="display:none;"><p>Group Policy overrides any preference that you set in Remote Desktop Connection.
+				When Terminal Services Group Policy prohibits drive sharing, you cannot share files between computers.</p></div></div><p style="margin-top:6;"><span class="bold">Cause: </span>Terminal Services Group Policy does not allow clipboard sharing.
+</p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">Solution: </span>Contact the network administrator about your Terminal Services Group Policy.
+			</td></tr></table></div><div class="ind" style="display:none;"><p>Group Policy overrides any preference that you set in Remote Desktop Connection.
+				When Terminal Services Group Policy prohibits clipboard sharing, you cannot copy and paste data between computers.</p></div></div></div><div class="related"><div class="content"><h3>See also</h3><p><a onclick="cancel(event)" href="31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm">Copy files between computers</a></p><p><a onclick="cancel(event)" href="632b1071-43dd-40dc-95e3-64f4fd5474d4.htm">Create and change connection files</a></p></div></div><div class="footer"> </div></div><div id="defDiv" class="defdiv" onclick="cancel(event)" /></body></html>

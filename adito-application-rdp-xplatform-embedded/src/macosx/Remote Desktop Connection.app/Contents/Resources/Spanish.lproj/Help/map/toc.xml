@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="yes"?>
+<toc projName="RDC" language="3082" buildVersion="08.03.03.2230">
+    <node id="2aa1559b-784f-445a-866c-2cb58fafcc92" istopic="false" title="Instalación y configuración">
+        <topic id="870500bb-d48d-4f90-b993-7d5a3f6f654c" istopic="true" icon="Help.png">Novedades en Conexión a Escritorio remoto</topic>
+        <topic id="471f8485-8dee-446b-92ba-0e1147a98f01" istopic="true" icon="Help.png">Configurar un equipo basado en Windows para el acceso remoto</topic>
+        <topic id="a292591e-3141-4db6-81f0-ef2552160702" istopic="true" icon="Help.png">Limitar una sesión a una única aplicación basada en Windows</topic>
+        <topic id="53c85d88-67e2-4ee3-8667-f9490bc9a257" istopic="true" icon="Help.png">Compatibilidad de versiones de Windows</topic>
+    </node>
+    <node id="e15f290f-081d-4b56-a068-39392510d0a9" istopic="false" title="Accesibilidad">
+        <topic id="ccf93f52-c6c8-429e-8e4d-7863ecf55c16" istopic="true" icon="Help.png">Opciones de acceso universal</topic>
+        <topic id="46607273-1caf-44ac-9e45-17682d2802a2" istopic="true" icon="Help.png">Cambiar un método abreviado del teclado</topic>
+        <topic id="2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f" istopic="true" icon="Help.png">Cambiar qué teclas funcionan como el botón secundario del mouse</topic>
+        <topic id="7754d369-102b-423e-8574-31e3ffdf1f5e" istopic="true" icon="Help.png">Métodos abreviados del teclado</topic>
+    </node>
+    <node id="8ccf8a64-7139-44f5-9e77-50f2ea3ff971" istopic="false" title="Conexión a un equipo basado en Windows">
+        <topic id="a12fb47b-5188-472c-b34c-fc7085b299a3" istopic="true" icon="Help.png">Conectar a un equipo basado en Windows</topic>
+        <topic id="7bb83716-72d8-45ce-aba3-286b57a456ea" istopic="true" icon="Help.png">Conectar con una sesión de consola de servidor</topic>
+        <topic id="d17dace4-91b6-4f80-a9a3-64d9a8468c86" istopic="true" icon="Help.png">Conectar a varios equipos</topic>
+        <topic id="31ad1a4c-0149-42db-8ce1-5f4277f47d84" istopic="true" icon="Help.png">Copiar archivos entre equipos</topic>
+        <topic id="39e12694-6b4a-404a-a3e1-e8b465992eae" istopic="true" icon="Help.png">Cerrar una conexión</topic>
+        <topic id="632b1071-43dd-40dc-95e3-64f4fd5474d4" istopic="true" icon="Help.png">Crear y cambiar archivos de conexión</topic>
+        <topic id="a776418a-8908-4345-9420-df141247602c" istopic="true" icon="Help.png">No puedo conectar al equipo basado en Windows</topic>
+        <topic id="2aae839c-7f91-4738-aea7-9ffb25dbfe2e" istopic="true" icon="Help.png">No puedo copiar y pegar entre equipos</topic>
+        <topic id="53c85d88-67e2-4ee3-8667-f9490bc9a257" istopic="true" icon="Help.png">Compatibilidad de versiones de Windows</topic>
+    </node>
+    <node id="1f6b0a9d-522b-4652-a6d1-33029f09dec3" istopic="false" title="Personalización de Conexión a Escritorio remoto">
+        <topic id="3b369a14-c4a3-4362-b813-d0d96ad03695" istopic="true" icon="Help.png">Agregar el nombre de usuario y contraseña de Windows a la llave de Mac OS</topic>
+        <topic id="1bce04d8-1bb0-4476-97d0-65848651a19c" istopic="true" icon="Help.png">Trabajar en modo de pantalla completa</topic>
+        <topic id="a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72" istopic="true" icon="Help.png">No puedo ver la barra de menús del Mac</topic>
+        <topic id="a292591e-3141-4db6-81f0-ef2552160702" istopic="true" icon="Help.png">Limitar una sesión a una única aplicación basada en Windows</topic>
+        <topic id="a4f5e69f-3916-4116-b962-3eeb31e35ced" istopic="true" icon="Help.png">Preferencias de pantalla de Conexión a Escritorio remoto</topic>
+        <topic id="7754d369-102b-423e-8574-31e3ffdf1f5e" istopic="true" icon="Help.png">Métodos abreviados del teclado</topic>
+        <topic id="46607273-1caf-44ac-9e45-17682d2802a2" istopic="true" icon="Help.png">Cambiar un método abreviado del teclado</topic>
+        <topic id="2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f" istopic="true" icon="Help.png">Cambiar qué teclas funcionan como el botón secundario del mouse</topic>
+        <topic id="49565e1b-0850-40ce-af0c-0465cddf8e04" istopic="true" icon="Help.png">Activar o desactivar sonidos</topic>
+        <topic id="1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d" istopic="true" icon="Help.png">Mejora de la velocidad de la sesión</topic>
+        <topic id="7c64a97b-fd96-4c9f-abe2-f9367733ee35" istopic="true" icon="Help.png">No tengo acceso a los discos duros de mi Mac</topic>
+        <topic id="d5ad51f4-6737-4b7f-b387-67a7a32c727d" istopic="true" icon="Help.png">No se escucha el sonido</topic>
+    </node>
+    <node id="322b458a-a834-49fe-a659-4a47ad42000f" istopic="false" title="Impresión">
+        <topic id="eb2f221f-e964-4e27-a4b3-31a3249d3c0f" istopic="true" icon="Help.png">Imprimir un documento</topic>
+        <topic id="fab719f3-811f-4dd8-bacd-6da24811d138" istopic="true" icon="Help.png">No puedo imprimir en una impresora conectada al Mac</topic>
+    </node>
+    <node id="e13ad438-9879-44a7-819b-0baecab4ffce" istopic="false" title="Seguridad y privacidad">
+        <topic id="d53e77b9-d020-468e-aee7-72ea45b361f3" istopic="true" icon="Help.png">Opciones de autenticación</topic>
+        <topic id="c681612c-30cb-41c0-a171-82949c3fddee" istopic="true" icon="Help.png">Ver la declaración de privacidad</topic>
+    </node>
+    <node id="ff488916-8b5e-4a0c-af96-37d065645612" istopic="false" title="Solución de problemas">
+        <topic id="a776418a-8908-4345-9420-df141247602c" istopic="true" icon="Help.png">No puedo conectar al equipo basado en Windows</topic>
+        <topic id="2aae839c-7f91-4738-aea7-9ffb25dbfe2e" istopic="true" icon="Help.png">No puedo copiar y pegar entre equipos</topic>
+        <topic id="7c64a97b-fd96-4c9f-abe2-f9367733ee35" istopic="true" icon="Help.png">No tengo acceso a los discos duros de mi Mac</topic>
+        <topic id="d5ad51f4-6737-4b7f-b387-67a7a32c727d" istopic="true" icon="Help.png">No se escucha el sonido</topic>
+        <topic id="fab719f3-811f-4dd8-bacd-6da24811d138" istopic="true" icon="Help.png">No puedo imprimir en una impresora conectada al Mac</topic>
+        <topic id="a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72" istopic="true" icon="Help.png">No puedo ver la barra de menús del Mac</topic>
+    </node>
+</toc>

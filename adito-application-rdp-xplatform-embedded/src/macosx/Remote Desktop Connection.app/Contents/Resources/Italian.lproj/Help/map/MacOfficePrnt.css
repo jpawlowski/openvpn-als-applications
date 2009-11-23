@@ -1,0 +1,25 @@
+/*  Style Sheet Last updated: 071008.1445 */
+/*  This style sheet is for printing from all browsers  */
+
+@media print {
+	.caution { border-top:1px solid #FF3300; border-bottom:1px solid #FF3300; padding:0 0 0 0; margin:0 0 6 20; }
+	.important {border-top:1px solid #003399;  border-bottom:1px solid #003399; padding:0 0 0 0;  margin:0 0 6 20; }
+
+	.ind .proc { margin-top:0; }
+
+	div.main { padding-left:0px; }
+	div.nav { display: none;  }
+	div.coursepg { display: block; }
+	div.qrPage { display: block; }
+	div.feedbackpg { display: none; }
+	div.courseNav { display:none; }
+	.pficon { display:none; }
+	h2.printonly { display:block; }
+	div.header { display:none; }
+	div.footer { display:none; }
+	div.related { display:none; }
+	.pfprintbtn { display:none; }
+	.showAll { display:none; }
+	.showAllArrow { display:none; }
+	.showAllText { display:none; }
+}

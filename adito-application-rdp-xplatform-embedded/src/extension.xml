@@ -1,0 +1,869 @@
+<bundle version="2.0.1"
+		requiredHostVersion="0.9.0"
+		type="executable"
+		id="adito-application-rdp-xplatform-embedded"
+		name="Embedded RDP client for Linux, Mac and Windows"
+		license="GPL"
+		order="99999"
+		productURL="http://www.microsoft.com/">
+		
+	<description>Execute embedded RDP Client on Linux, Mac and Windows</description>
+
+	<extension type="executable" extension="adito-application-rdp-xplatform-embedded" name="Embedded RDP client for Linux, Mac and Windows" smallIcon="xplatformrdp16x16.png" largeIcon="xplatformrdp32x32.png">
+		
+		<description>Execute embedded RDP Client on Linux, Mac and Windows</description>
+		
+		<parameter name="hostname" category="1" sequence="0" type="0"/>
+		<parameter name="port" category="1" sequence="1" type="1" default="3389" optional="true"/>
+		<parameter name="username" category="1" sequence="2" type="0" optional="true"/>
+		<parameter name="domain" category="1" sequence="3" type="0" optional="true"/>
+		<parameter name="password" category="1" sequence="3" type="4" optional="true" defaultValue=""/>
+		<parameter name="screenmode" category="2" sequence="0" type="3" typeMeta="0,1" default="1" optional="true"/>
+		<parameter name="width" category="2" sequence="1" type="1" default="1024" optional="true"/>
+		<parameter name="height" category="2" sequence="2" type="1" default="768" optional="true"/>
+		<parameter name="bpp" category="2" sequence="3" type="3" typeMeta="8,15,16,24" default="16" optional="true"/> 
+		<parameter name="redirectdrives" category="3" sequence="0" type="3" typeMeta="0,1" default="0" optional="true"/>
+		<parameter name="redirectprinters" category="3" sequence="1" type="3" typeMeta="0,1" default="0" optional="true"/>
+		<parameter name="redirectsmartcards" category="3" sequence="2" type="3" typeMeta="0,1" default="0" optional="true"/>
+		<parameter optional="true" category="4" type="3" name="redirectaudio" typeMeta="0,1,2" sortOrder="0" defaultValue="0"/>
+		<parameter optional="true" category="4" type="0" name="clienthostname" sortOrder="1" defaultValue=""/>
+		<parameter optional="true" category="4" type="0" name="keyboardmap" sortOrder="2" defaultValue=""/>
+		<parameter optional="true" category="4" type="3" name="rdpversion" typeMeta="4,5" sortOrder="3" defaultValue="5"/>
+		<parameter optional="true" category="4" type="2" name="disableencryption" typeMeta="1,0" sortOrder="4" defaultValue="0"/>
+		<parameter optional="true" category="4" type="2" name="disableencryptioncs" typeMeta="1,0" sortOrder="5" defaultValue="0"/>
+		<parameter optional="true" category="4" type="0" name="windowstitle" sortOrder="0" defaultValue=""/>
+		<parameter optional="true" category="5" type="2" name="seamlessrdp" typeMeta="1,0" sortOrder="1" defaultValue="0"/>
+		<parameter optional="true" category="5" type="0" name="command" sortOrder="2" defaultValue=""/>
+		<parameter optional="true" category="5" type="0" name="cwd" sortOrder="3" defaultValue=""/>    
+		<parameter optional="true" category="5" type="0" name="singleapplication" sortOrder="4" defaultValue=""/>
+
+		<messages>
+			<message key="category.1.name">General</message>
+			<message key="category.2.name">Display</message>
+			<message key="category.3.name">Local Resources</message> 
+			<message key="category.4.name">Linux Options</message> 
+			<message key="category.5.name">Linux SeamlessRDP</message> 
+			<message key="hostname.name">Hostname</message>
+			<message key="port.name">Port</message>
+			<message key="username.name">Username</message>
+			<message key="password.name">Password</message>
+			<message key="password.description">The password to authenticate with.  Note that this may have no effect if "Always prompt for  password"  is  enabled  on  the  server. WARNING:  if  you  specify  a password on the command line it may be visible to other users when they use tools like ps.</message>
+			<message key="domain.name">Domain</message>
+			<message key="screenmode.name">Screen Mode</message>
+			<message key="screenmode.value.1">Normal</message>
+			<message key="screenmode.value.0">Fullscreen</message>
+			<message key="width.name">Width</message>
+			<message key="height.name">Height</message>
+			<message key="bpp.name">Colors</message>
+			<message key="bpp.value.8">256 Colors</message>
+			<message key="bpp.value.15">High Color (15 bit)</message>
+			<message key="bpp.value.16">High Color (16 bit)</message>
+			<message key="bpp.value.24">True Color (24 bit)</message>
+			<message key="redirectdrives.name">Redirect disk drives</message>
+			<message key="redirectdrives.value.0">No</message>
+			<message key="redirectdrives.value.1">Yes</message>
+			<message key="redirectprinters.name">Redirect Local Printers</message>
+			<message key="redirectprinters.value.0">No</message>
+			<message key="redirectprinters.value.1">Yes</message>
+			<message key="redirectsmartcards.name">Redirect Smart Cards</message>
+			<message key="redirectsmartcards.value.0">No</message>
+			<message key="redirectsmartcards.value.1">Yes</message>
+			
+			<message key="clienthostname.name">Client hostname</message>
+			<message key="clienthostname.description">Normally rdesktop automatically obtains the hostname of the client</message>
+			<message key="keyboardmap.name">Keyboard layout</message>
+			<message key="keyboardmap.description">Keyboard layout to emulate.  This requires a corresponding keymap to be installed.  The standard keymaps provided with  rdesktop follow the RFC1766 naming scheme: a language code followed by a country code if necessary - e.g.  en-us, en-gb, de, fr, sv, etc.</message>
+			<message key="rdpversion.name">RDP Version</message>
+			<message key="rdpversion.value.4">4</message>
+			<message key="rdpversion.value.5">5</message>
+			<message key="rdpversion.description">RDP version (default 5)</message>
+			<message key="seamlessrdp.name">Seamless RDP</message>
+			<message key="seamlessrdp.value.0">No</message>
+			<message key="seamlessrdp.value.1">Yes</message>
+			<message key="seamlessrdp.description"> Enable SeamlessRDP. In this mode, rdesktop creates a X11 window for each window on the server side. This mode requires the  SeamlessRDP  server side component, which is available from http://www.cendio.com/seamlessrdp/.  When using this option, you should specify a startup shell which launches the desired application through SeamlessRDP.
+				Example: rdesktop -A -s seamlessrdpshell notepad</message>
+			<message key="disableencryption.name">Disable encryption</message>
+			<message key="disableencryption.value.0">No</message>
+			<message key="disableencryption.value.1">Yes</message>
+			<message key="disableencryption.description">Disable encryption.  This option is only needed (and will only work) if you have a French version of NT TSE</message>
+			<message key="disableencryptioncs.name">Disable encryption from client to server</message>
+			<message key="disableencryptioncs.value.0">No</message>
+			<message key="disableencryptioncs.value.1">Yes</message>
+			<message key="disableencryptioncs.description">This sends an encrypted login packet, but everything after this is unencrypted  (including interactive logins)</message>
+			<message key="windowstitle.name">Windows title</message>
+			<message key="windowstitle.description">Sets the window title. The title must be specified using an UTF-8 string. If not specified, it uses the hostname specified above</message>
+			<message key="redirectaudio.name">Redirect sound</message>
+			<message key="redirectaudio.value.0">Bring to this computer</message>
+			<message key="redirectaudio.value.1">Leave at remote computer</message>
+			<message key="redirectaudio.value.2">Do not play</message>
+			<message key="redirectaudio.description">Redirects sound generated on the server to the client. "remote" only has any effect when you connect to the console. (Requires Windows XP or newer)</message>
+			<message key="command.name">Start the following program:</message>
+			<message key="command.description">Startup shell for the user - starts a specific application instead of Explorer.</message>
+			<message key="cwd.name">Start in the following folder:</message>
+			<message key="cwd.description">The initial working directory for the user.  Often used in combination with -s to set up a fixed login environment.</message>
+			<message key="singleapplication.name">Enable single application mode</message>
+			<message key="singleapplication.description">This option can be used when running a single, maximized application (via -s). When the minimize button  of  the windows application is pressed, the rdesktop window is minimized instead of the remote application. The maximize/restore button is disabled. For this to work, you must specify the correct button size, in pixels. The special word "standard" means 18  pixels</message>
+			</messages> 
+		
+		<files>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Info.plist</file>
+			<file os="MAC OS X" exec="true">macosx/Remote Desktop Connection.app/Contents/MacOS/Remote Desktop Connection</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/PkgInfo</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Swedish.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/background.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Keyboard.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Printers.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/RDCdoc.icns</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/German.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Security.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/French.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Feedback.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Spanish.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/English.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Drives.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Display.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Alert.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Dutch.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Login.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Warnning.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/pp_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/mm_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/pp_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/wd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/er_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/wd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/xl_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/mm_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/pp_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/xl_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/xl_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/mm_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/er_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/wd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/er_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Japanese.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/RDC.icns</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Banner.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/2fe10ef0-f31a-4c1b-b8c0-41b1ed67741f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/3b369a14-c4a3-4362-b813-d0d96ad03695.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/1fe4533f-c2e1-46a6-a3ff-5896d1034041.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/MacOffice.js</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/rd_heading_bg.jpg</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/Settings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/link_off.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/toc.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/rd_bullet.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/triangle_open.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/123_circle_blue_1.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/Help.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/triangle_closed.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/MacOfficePrnt.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/caution_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/important_bg.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/gray_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/Remote Desktop Connection Help Index</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/rd_icon_ball.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/Course.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/123_circle_blue_4.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/Template.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/MacOffice.css</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/123_circle_blue_3.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/blue_bar.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/CourseLaunch.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/123_circle_blue_2.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/Movie.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/1-2-3.png</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/triangle_transition.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/map/imap.xml</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/9afccd3e-cb5a-433b-99eb-ff065535d7e2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/2aae839c-7f91-4738-aea7-9ffb25dbfe2e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/fab719f3-811f-4dd8-bacd-6da24811d138.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/471f8485-8dee-446b-92ba-0e1147a98f01.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/53c85d88-67e2-4ee3-8667-f9490bc9a257.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/46607273-1caf-44ac-9e45-17682d2802a2.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/39e12694-6b4a-404a-a3e1-e8b465992eae.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/a776418a-8908-4345-9420-df141247602c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/d53e77b9-d020-468e-aee7-72ea45b361f3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/a12fb47b-5188-472c-b34c-fc7085b299a3.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/3384bf07-1aa8-4699-bd22-dc6d07313d23.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/7754d369-102b-423e-8574-31e3ffdf1f5e.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/a292591e-3141-4db6-81f0-ef2552160702.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/ccf93f52-c6c8-429e-8e4d-7863ecf55c16.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/7bb83716-72d8-45ce-aba3-286b57a456ea.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/art/rd_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/art/rd_xp_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/art/rd_arrow_next_to_lock.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/art/start_vista.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/art/rdc_vista_disconnect.gif</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/49565e1b-0850-40ce-af0c-0465cddf8e04.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/a368f12d-b3ef-4e23-8d3f-ff06ca5d1e72.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/632b1071-43dd-40dc-95e3-64f4fd5474d4.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/7c64a97b-fd96-4c9f-abe2-f9367733ee35.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/1bce04d8-1bb0-4476-97d0-65848651a19c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/d5ad51f4-6737-4b7f-b387-67a7a32c727d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/d5d3fe04-3571-4700-bb81-f52a376e19a8.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/a0c64d3c-2c2a-43e1-82e1-fc5d9471f504.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/1c2f4c5f-4abe-4eb0-9875-f4c8fe5e4d7d.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/870500bb-d48d-4f90-b993-7d5a3f6f654c.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/eb2f221f-e964-4e27-a4b3-31a3249d3c0f.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/d17dace4-91b6-4f80-a9a3-64d9a8468c86.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/c681612c-30cb-41c0-a171-82949c3fddee.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Help/a4f5e69f-3916-4116-b962-3eeb31e35ced.htm</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/CredentialDialog.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/MainMenu.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/Localizable.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/AboutPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/KeyNames.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Italian.lproj/AutoReconnectPanel.nib/keyedobjects.nib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Sound.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Resources/Programs.tiff</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/version.plist</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/Swedish.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/RDCPALFrameworkInfo.plist</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/German.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/French.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/Info.plist</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/Spanish.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/English.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/Dutch.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/Japanese.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/Resources/Italian.lproj/Authentication.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/12/RDCPAL</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Versions/Current</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/Resources</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/RDCPAL.framework/RDCPAL</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/Netlib.framework/Versions/12/Resources/Info.plist</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/Netlib.framework/Versions/12/Resources/English.lproj/InfoPlist.strings</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/Netlib.framework/Versions/12/Netlib</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/Netlib.framework/Versions/12/Netlib.map</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/Netlib.framework/Versions/Current</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/Netlib.framework/Resources</file>
+			<file os="MAC OS X">macosx/Remote Desktop Connection.app/Contents/Frameworks/Netlib.framework/Netlib</file>
+			<file os="Linux" exec="true">linux/rdesktop</file>
+			<file os="MAC OS X">Default-mac.rdp</file>
+			<file os="MAC OS X">Default-mac-fullscreen.rdp</file>
+			<file os="Windows">Default-win.rdp</file>
+		</files>
+                <if os="MAC OS X">
+			<replacements templateFile="Default-mac-fullscreen.rdp" parameter="file0" encoding="US-ASCII" />
+			<replacements templateFile="Default-mac.rdp" parameter="file1" encoding="US-ASCII" />
+		</if>
+                <if os="Windows">		
+		    <replacements templateFile="Default-win.rdp" parameter="file" encoding="US-ASCII"/>
+		</if>
+
+		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" singleConnection="false" usePreferredPort="false"/>
+		<executable>
+                    <if os="Linux">
+	                <program>linux/rdesktop</program>
+			<arg>${tunnel:rdp.hostname}:${tunnel:rdp.port}</arg>
+			<if parameter="username" not="true" value="">
+				<arg>-u</arg>
+				<arg>${param:username}</arg>
+			</if>
+			<if parameter="password" not="true" value="">
+				<arg>-p</arg>
+				<arg>${param:password}</arg>
+			</if>
+		       <if parameter="clienthostname" not="true" value="">
+					<arg>-n</arg>
+					<arg>${param:clienthostname}</arg>
+			</if>
+			<if parameter="keyboardmap" not="true" value="">
+					<arg>-k</arg>
+					<arg>${param:keyboardmap}</arg>
+			</if>
+					<if parameter="rdpversion" value="4">
+					<arg>-4</arg>
+			</if>
+			<if parameter="seamlessrdp" value="1">
+					<arg>-A</arg>
+			</if>
+			<if parameter="disableencryption" value="1">
+					<arg>-e</arg>
+			</if>
+			<if parameter="disableencryptioncs" value="1">
+					<arg>-E</arg>
+			</if>
+			<if parameter="windowstitle" not="true" value="">
+					<arg>-T</arg>
+			<arg>${param:windowstitle}</arg>
+			</if>
+			<arg>-T</arg>
+			<arg>${param:hostname}</arg>
+			<if parameter="screenmode" value="0">
+			  <arg>-f</arg>
+			</if>
+			<if parameter="screenmode" value="1">
+			  <if parameter="width" not="true" value="">
+			    <if parameter="height" not="true" value="">
+			      <arg>-g</arg>
+			      <arg>${param:width}x${param:height}</arg>
+			    </if>
+			  </if>
+			</if>
+			<if parameter="bpp" not="true" value="">
+			  <arg>-a</arg>
+			  <arg>${param:bpp}</arg>
+			</if>
+				<if parameter="redirectaudio" value="0">
+					<arg>-r</arg>
+					<arg>sound:local</arg>
+				</if>
+				<if parameter="redirectaudio" value="1">
+					<arg>-r</arg>
+					<arg>sound:remote</arg>
+				</if>
+				<if parameter="redirectaudio" value="2">
+					<arg>-r</arg>
+					<arg>sound:off</arg>
+				</if>
+			<if parameter="command" not="true" value="">
+				<arg>-s</arg>
+				<arg>${param:command}</arg>
+			</if>
+			<if parameter="cwd" not="true" value="">
+				<arg>-c</arg>
+				<arg>${param:cwd}</arg>
+			</if>
+			<if parameter="singleapplication" not="true" value="">
+				<arg>-S</arg>
+				<arg>${param:singleapplication}</arg>
+			</if>
+		     </if>
+	            <if os="Windows">
+	                <program>mstsc.exe</program>
+			<arg>${param:file}</arg>
+                        <arg>/v:</arg>
+                        <arg>${tunnel:rdp.hostname}:${tunnel:rdp.port}</arg>
+                        <arg>/w:${param:width}</arg>
+                        <arg>/h:${param:height}</arg>
+                        <if parameter="screenmode" value="0">
+                            <arg>/f</arg>
+                        </if>  			
+	            </if>
+	            <if os="MAC OS X">
+                	<program>macosx/Remote Desktop Connection.app/Contents/MacOS/Remote Desktop Connection</program>
+			<if parameter="screenmode" value="0">
+				<arg>${param:file0}</arg>
+			</if>
+			<if parameter="screenmode" value="1">
+				<arg>${param:file1}</arg>
+			</if>		
+		    </if>
+		</executable>
+	</extension>
+</bundle>

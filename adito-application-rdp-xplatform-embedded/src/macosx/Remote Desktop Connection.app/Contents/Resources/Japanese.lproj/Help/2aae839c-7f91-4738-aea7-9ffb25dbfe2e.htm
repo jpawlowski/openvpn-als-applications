@@ -1,0 +1,49 @@
+﻿<html lang="ja-JP" xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:macua="http://ns.microsoft.com/macua" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:macuaXT="urn:macua/XT"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="assetID" content="2aae839c-7f91-4738-aea7-9ffb25dbfe2e" /><title>コンピュータ間でコピーおよびペーストできない</title><link rel="stylesheet" type="text/css" href="map/MacOffice.css" /><link rel="stylesheet" type="text/css" href="map/MacOffice1.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice2.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice3.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice4.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOfficePrnt.css" /><style type="text/css">
+					.alertHeadImp { background:#FFFFFF url(map/important_bg.gif) no-repeat; }
+					.alertHeadCau { background:#FFFFFF url(map/caution_bg.gif) no-repeat; }
+					.header { background:#CCCCCC url(map/gray_bar.gif); }
+					.footer { background:#CCCCCC url(map/gray_bar.gif); }
+					.termdiv { background:#FFFFFF url(map/blue_bar.gif); }
+					</style><script type="text/javascript">
+	var uiArtFolder = 'map/';
+	var showText = 'すべて表示';
+	var hideText = 'すべて非表示';
+				</script><script type="text/javascript" src="map/MacOffice.js">';</script></head><body onclick="hide()" onload="init()"><div id="main" class="main"><div id="header" class="header"><p style="padding-top:2px;" /></div><div class="title"><h1 style="font-size:14pt;">コンピュータ間でコピーおよびペーストできない</h1><div class="divShowHideAll" align="right"><table id="showHideTable" class="showAll" cellpadding="0" cellspacing="0" border="0" align="right" style="display:none;"><tr onclick="showHideAll(this)"><td class="showAllArrow" style="padding-top:1;"><img src="map/triangle_closed.gif" align="left" /></td><td id="showHideAll" class="showAllText" width="*" onmouseover="hilite(this)" onmouseout="unhilite(this)">すべて表示</td></tr></table></div></div><div class="content"><p style="margin-top:6;"><span class="bold">原因 : </span>クリップボードのデータ形式にはペーストできないものがあります。</p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">対処方法 : </span>そのクリップボードのデータ形式に対応しているプログラムに、いったんテキストをコピーします。</td></tr></table></div><div class="ind" style="display:none;"><h5>Windows ベースのコンピュータでコピーし、Mac にペーストする</h5><div class="proc"><ol><li> 
+					<p>Windows ベースのコンピュータで目的のテキストをコピーします。</p>
+				</li><li> 
+					<p>Mac でテキストエディットを開き、テキストをペーストします。</p>
+				</li><li> 
+					<p>テキストエディットからテキストをコピーし、目的のファイルにペーストします。</p>
+				</li></ol></div><h5>Mac でコピーし、Windows ベースのコンピュータにペーストする</h5><div class="proc"><ol><li> 
+					<p>Mac で目的のテキストをコピーします。</p>
+				</li><li> 
+					<p>Windows ベースのコンピュータでメモ帳またはワードパッドを開き、テキストをペーストします。</p>
+				</li><li> 
+					<p>メモ帳またはワードパッドからテキストをコピーし、目的のファイルにペーストします。</p>
+				</li></ol></div></div></div><p style="margin-top:6;"><span class="bold">原因 : </span>目的のファイルが、Windows ベースのコンピュータからアクセスできるように設定されていません。</p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">対処方法 : </span>リモート デスクトップ セッションを開始する前に Windows ベースのコンピュータから Mac のディスクを利用できるようにしておきます。</td></tr></table></div><div class="ind" style="display:none;"><div class="proc"><ol><li> 
+					<p> [RDC]  メニューの  [環境設定]  をクリックします。</p>
+				</li><li> 
+					<p> [ドライブ]  をクリックし、ポップアップ メニューで必要なオプションを選択します。 </p>
+					<p>ディスクまたはフォルダが利用可能になり、Windows ベースのコンピュータから Mac 上のファイルにアクセスできるようになります。</p>
+					<p>接続後にこの変更を行った場合、選択したディスクまたはフォルダが利用できるのは次回の接続以降になります。</p>
+				</li><li> 
+					<p> [スタート]  メニューの  [コンピュータ]  または  [マイ コンピュータ]  をクリックします。</p>
+					<p>利用可能になった Mac のディスクまたはフォルダが、Windows ベースのコンピュータ上の他のすべてのディスクやフォルダと共に一覧に表示されます。 </p>
+					<div class="alert2"><p><span class="note">メモ </span> [スタート]  メニューが表示されない場合は、 [表示]  メニューの  [全画面表示]  をクリックします。後でウインドウ モードに戻るには、画面の上端にポインタを置いて RDC のメニュー バーが表示されるのを待ち、メニュー バーが表示されたら、 [表示]  メニューをクリックし、 [全画面表示]  のチェックをオフにします。</p> 
+							
+						</div> 
+				</li><li> 
+					<p>コピー元のディスクまたはフォルダを開きます。</p>
+				</li><li> 
+					<p> [スタート]  メニューの  [コンピュータ]  または  [マイ コンピュータ]  をクリックします。</p>
+				</li><li> 
+					<p>コピー先のディスクまたはフォルダを開きます。</p>
+					<p>これで、2 つのウインドウが開いて、コピー元の場所とコピー先の場所が表示されている状態になります。</p>
+				</li><li> 
+					<p>コピー元のドキュメントをコピー先の場所までドラッグします。</p>
+				</li></ol></div></div></div><p style="margin-top:6;"><span class="bold">原因 : </span>ターミナル サービスのグループ ポリシーでドライブの共有が許可されていません。
+</p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">対処方法 : </span>ターミナル サービスのグループ ポリシーの詳細については、ネットワーク管理者に問い合わせてください。</td></tr></table></div><div class="ind" style="display:none;"><p>グループ ポリシーは、Remote Desktop Connection のどの環境設定よりも優先されます。
+				ターミナル サービスのグループ ポリシーでドライブの共有が禁止されている場合、コンピュータ間でファイルを共有することはできません。</p></div></div><p style="margin-top:6;"><span class="bold">原因 : </span>ターミナル サービスのグループ ポリシーでクリップボードの共有が許可されていません。
+</p><div class="ind" style="margin-bottom:6;"><div class="solution" id="expando" name="expando" onclick="showHideBlock(this, event)" style="cursor:pointer;"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><span class="bold">対処方法 : </span>ターミナル サービスのグループ ポリシーの詳細については、ネットワーク管理者に問い合わせてください。
+			</td></tr></table></div><div class="ind" style="display:none;"><p>グループ ポリシーは、Remote Desktop Connection のどの環境設定よりも優先されます。
+				ターミナル サービスのグループ ポリシーでクリップボードの共有が禁止されている場合、コンピュータ間でデータをコピーしてペーストすることはできません。</p></div></div></div><div class="related"><div class="content"><h3>関連項目</h3><p><a onclick="cancel(event)" href="31ad1a4c-0149-42db-8ce1-5f4277f47d84.htm">コンピュータ間でファイルをコピーする</a></p><p><a onclick="cancel(event)" href="632b1071-43dd-40dc-95e3-64f4fd5474d4.htm">接続ファイルを作成および変更する</a></p></div></div><div class="footer"> </div></div><div id="defDiv" class="defdiv" onclick="cancel(event)" /></body></html>

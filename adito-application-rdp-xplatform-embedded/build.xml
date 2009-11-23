@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-application-linux-native-rdesktop" default="dist">
+
+        <!-- Standard build locations -->
+        <property name="build.src" value="src" />
+        <property name="output.file" value="adito-application-rdp-xplatform-embedded.zip" />
+
+	<!-- Build the adito-application-rdp-xplatform-embedded.zip -->
+	<target name="dist">
+		<zip destfile="${output.file}">
+			<zipfileset dir="${build.src}" prefix="adito-application-rdp-xplatform-embedded">
+			</zipfileset>
+		</zip>
+	</target>
+
+</project>

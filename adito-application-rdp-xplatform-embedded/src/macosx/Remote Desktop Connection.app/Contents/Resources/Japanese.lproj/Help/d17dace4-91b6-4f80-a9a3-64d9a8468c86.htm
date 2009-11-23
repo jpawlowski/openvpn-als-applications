@@ -1,0 +1,54 @@
+﻿<html lang="ja-JP" xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:macua="http://ns.microsoft.com/macua" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:macuaXT="urn:macua/XT"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="assetID" content="d17dace4-91b6-4f80-a9a3-64d9a8468c86" /><title>複数のコンピュータに接続する</title><link rel="stylesheet" type="text/css" href="map/MacOffice.css" /><link rel="stylesheet" type="text/css" href="map/MacOffice1.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice2.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice3.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOffice4.css" disabled="true" /><link rel="stylesheet" type="text/css" href="map/MacOfficePrnt.css" /><style type="text/css">
+					.alertHeadImp { background:#FFFFFF url(map/important_bg.gif) no-repeat; }
+					.alertHeadCau { background:#FFFFFF url(map/caution_bg.gif) no-repeat; }
+					.header { background:#CCCCCC url(map/gray_bar.gif); }
+					.footer { background:#CCCCCC url(map/gray_bar.gif); }
+					.termdiv { background:#FFFFFF url(map/blue_bar.gif); }
+					</style><script type="text/javascript">
+	var uiArtFolder = 'map/';
+	var showText = 'すべて表示';
+	var hideText = 'すべて非表示';
+				</script><script type="text/javascript" src="map/MacOffice.js">';</script></head><body onclick="hide()" onload="init()"><div id="main" class="main"><div id="header" class="header"><p style="padding-top:2px;" /></div><div class="title"><h1 style="font-size:14pt; padding-right:4em;">複数のコンピュータに接続する</h1><div class="divShowHideAll" align="right"><table id="showHideTable" class="showAll" cellpadding="0" cellspacing="0" border="0" align="right" style="display:none;"><tr onclick="showHideAll(this)"><td class="showAllArrow" style="padding-top:1;"><img src="map/triangle_closed.gif" align="left" /></td><td id="showHideAll" class="showAllText" width="*" onmouseover="hilite(this)" onmouseout="unhilite(this)">すべて表示</td></tr></table></div></div><div class="content"><div><p>接続先の Windows ベースのコンピュータごとに接続ファイルを保存すると、複数のコンピュータに同時に接続できます。接続ファイルごとに、自動ログイン資格情報、画面のサイズ、表示オプションなどのさまざまな環境設定を指定でき、この接続ファイルを開くことで、対象のコンピュータにすばやく接続することができます。</p><div class="alert"><div id="alertHead" class="alertHeadImp">重要</div><div class="important"> 
+				<p>Windows ベースのコンピュータは、電源がオンで、ネットワーク接続が確立された状態である必要があります。スリープ状態、休止状態、スタンバイ状態のコンピュータに接続することはできません。したがって、Windows ベースのコンピュータのスリープ、休止、およびスタンバイの設定は必ず [なし] に設定してください。スリープ、休止、およびスタンバイの設定の変更方法については、Windows のヘルプを参照してください。接続先のコンピュータで実行している Windows が、リモート接続をサポートするバージョンであることも確認してください。バージョンの一覧については、「<a onclick="cancel(event)" href="53c85d88-67e2-4ee3-8667-f9490bc9a257.htm">Windows バージョンの互換性</a>」を参照してください。</p>
+			</div></div><div><div id="expando" name="expando" class="expando" onclick="showHideBlock(this, event)"><table cellpadding="0" cellspacing="0" border="0" class="expandoTable"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><h2 style="font-size:12pt;">ステップ 1: 1 台目の Windows ベースのコンピュータに接続する</h2></td></tr></table></div><div class="ind" style="display:none;"><div class="proc"><ol><li> 
+						<p>Macintosh コンピュータで、Remote Desktop Connection を起動します。</p>
+					</li><li> 
+						<p> [コンピュータ]  ボックスに接続先の Windows ベースのコンピュータの名前を入力し、 [接続]  をクリックします。</p>
+					</li><li> 
+						<p>必要に応じて、Windows ベースのコンピュータのユーザー名、パスワード、およびドメインを入力します。</p>
+					</li></ol></div></div></div><div><div id="expando" name="expando" class="expando" onclick="showHideBlock(this, event)"><table cellpadding="0" cellspacing="0" border="0" class="expandoTable"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><h2 style="font-size:12pt;">ステップ 2: 1 台目の Windows ベースのコンピュータの接続ファイルを保存する</h2></td></tr></table></div><div class="ind" style="display:none;"><p>接続中のコンピュータに使用している、接続の環境設定を選択します。</p><div class="proc"><ol><li> 
+						<p> [RDC]  メニューの  [環境設定]  をクリックします。</p>
+					</li><li> 
+						<p>必要なオプションを選択します。</p>
+					</li><li> 
+						<p> [ファイル]  メニューの  [別名で保存]  をクリックします。</p>
+					</li><li> 
+						<p> [名前]  ボックスに、接続ファイル名を入力します。</p>
+					</li><li> 
+						<p> [保存]  をクリックします。</p>
+					</li></ol></div><div class="alert2"><p><span class="tip">ヒント </span>接続ファイルに保存した Windows ベースのコンピュータにすばやく接続するには、 [ファイル]  メニューの  [保存した接続を開く]  をクリックし、目的のファイルをクリックします。 </p> 
+						
+					</div></div></div><div><div id="expando" name="expando" class="expando" onclick="showHideBlock(this, event)"><table cellpadding="0" cellspacing="0" border="0" class="expandoTable"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><h2 style="font-size:12pt;">ステップ 3: 他の Windows ベースのコンピュータに接続する</h2></td></tr></table></div><div class="ind" style="display:none;"><div class="proc"><ol><li> 
+						<p>Remote Desktop Connection のメニュー バーで  [ファイル]  をクリックし、 [新しい接続]  をクリックします。</p>
+					</li><li> 
+						<p> [コンピュータ]  ボックスに接続先の Windows ベースのコンピュータの名前を入力し、 [接続]  をクリックします。</p>
+					</li><li> 
+						<p>必要に応じて、Windows ベースのコンピュータのユーザー名、パスワード、およびドメインを入力します。</p>
+						<p>Mac デスクトップには、接続先の Windows ベースのコンピュータごとに 1 つずつ、合計 2 つのセッション ウインドウが表示されます。さらに他の接続を開くには、この操作を繰り返します。</p>
+					</li></ol></div></div></div><div><div id="expando" name="expando" class="expando" onclick="showHideBlock(this, event)"><table cellpadding="0" cellspacing="0" border="0" class="expandoTable"><tr><td class="arrow"><img src="map/triangle_closed.gif" /></td><td><h2 style="font-size:12pt;">ステップ 4: 他の Windows ベースのコンピュータの接続ファイルを保存する</h2></td></tr></table></div><div class="ind" style="display:none;"><div class="proc"><ol><li> 
+						<p>対象となる接続先の Windows ベースのコンピュータのセッション ウインドウを選択します。</p>
+					</li><li> 
+						<p> [RDC]  メニューの  [環境設定]  をクリックします。</p>
+					</li><li> 
+						<p>必要なオプションを選択します。</p>
+					</li><li> 
+						<p> [ファイル]  メニューの  [別名で保存]  をクリックします。</p>
+					</li><li> 
+						<p> [名前]  ボックスに、接続ファイル名を入力します。</p>
+					</li><li> 
+						<p> [保存]  をクリックします。</p>
+					</li><li> 
+						<p>対象となる接続先の Windows ベースのコンピュータごとに、この操作を繰り返します。</p>
+					</li></ol></div><div class="alert2"><p><span class="tip">ヒント </span>接続ファイルに保存した Windows ベースのコンピュータにすばやく接続するには、 [ファイル]  メニューの  [保存した接続を開く]  をクリックし、目的のファイルをクリックします。 </p> 
+						
+					</div></div></div></div></div><div class="related"><div class="content"><h3>関連項目</h3><p><a onclick="cancel(event)" href="632b1071-43dd-40dc-95e3-64f4fd5474d4.htm">接続ファイルを作成および変更する</a></p><p><a onclick="cancel(event)" href="a776418a-8908-4345-9420-df141247602c.htm">Windows ベースのコンピュータに接続できない</a></p><p><a onclick="cancel(event)" href="7bb83716-72d8-45ce-aba3-286b57a456ea.htm">サーバーのコンソール セッションに接続する</a></p></div></div><div class="footer"> </div></div><div id="defDiv" class="defdiv" onclick="cancel(event)" /></body></html>

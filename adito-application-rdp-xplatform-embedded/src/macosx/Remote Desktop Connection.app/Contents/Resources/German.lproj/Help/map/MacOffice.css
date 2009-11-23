@@ -1,0 +1,298 @@
+/*  Style Sheet Last updated - 070619.1450*/
+/*  This style sheet is for Safari / Mozilla - Mac / Win */
+
+
+/*  BODY = default paragraph font */
+
+body 		{background-color: #ffffff; font-family:"Lucida Grande", "Lucida Sans", Verdana, sans-serif; font-size:9pt; margin:0 0 0 0; padding:0 0 0 0;}
+
+/*  PARAGRAPH */
+p		{ margin-top:0pt; margin-bottom:3pt; }
+
+/*  HYPERLINKS */
+
+a:link		{color: #003399; text-decoration:none;  border-bottom:1px solid #CCCCFF; }
+a:hover  {color:#003399; border-bottom:1px dashed #003399; }
+a:active	{color: #003399;}
+a:visited	{color: #660066; text-decoration:none;  border-bottom:1px solid #CC99CC;}	
+a:visited:hover	{color:#003399; border-bottom:1px dashed #003399; }	
+.pop		{font-weight: bold; font-style: italic; text-decoration: none; cursor: help; }
+
+/* INPUTS */
+input { cursor:pointer; }
+
+/*  LISTS */
+
+dd		{margin-left: 2em; }
+
+ol ul	{list-style: disc; padding:0 0 0 0; margin-left:15; }
+ul ul	{list-style: disc; padding:0 0 0 0; margin-left:15; }
+.proc ol { margin-top:0; padding-left:0; margin-left:34; }
+.proc ul {margin-top:0; padding-left:0; margin-left:32; }
+.proc ol .ul { margin-left:4; }
+
+/* These styles apply to procedures in courses and provide the bignumber styles */
+.bignum { font-weight:bold; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; color:#003399; font-size:14pt; } 
+.txttop { vertical-align:text-top; margin-left:10; }
+.step { font-weight:normal; font-family:"Lucida Grande", "Lucida Sans", Verdana, sans-serif; color:#000000; font-size:9pt; padding-top:8px;}
+
+
+/*These are DIV styles */
+.ol	{  margin:0 15 0 -5; }
+.ul	{  margin:0 15 0 -9; }
+
+li p {  margin:3pt 0 0 0;}
+li {padding:0 0 0 0;}
+
+.ind ol { margin-left:-4pt; }
+.ind .proc ol { margin-left:9; }
+
+/*  PREFORMATTING and CODE */
+pre		 {font-size: 110%; margin-left:10px; margin-bottom:6px; margin-top:6px; font-family: courier, "Courier New", mono-spaced; }
+code	 {font-family: courier, "Courier New", mono-spaced; font-size: 110%; }
+
+/* Symbolic URIs */
+.email, .web, .ftp { font-family: Verdana, sans-serif; font-size:90%; color: #003399; }
+
+/*  TABLES */
+
+table	{  margin:12 15 6 0; border-top:2px solid #6699FF; border-bottom:2px solid #6699FF; width:100%; }
+table table	{  margin:3 0 0 4; border-top-width:0px; border-bottom-width:0px; width:100%;}
+ol table { margin-right:15px; }
+ul table {  margin-right:15px; }
+th, thead		{ font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-size:10pt; font-weight:normal; text-align:left; vertical-align:bottom; border-bottom:1px solid #6699FF; color:#003399; padding:1pt 6pt 0 6pt;}
+td		{ font-family: "Lucida Grande", "Lucida Sans", Verdana, sans-serif; font-size:9pt; vertical-align: top; border-bottom:1px solid #CCCCCC;  padding:2pt 6pt 1pt 6pt; }
+.tbl_tr123 { border:0;  margin:0 0 14 0; width:350; }
+.tbl_tr123_ind { border:0; margin:0 0 14 0; width:350; }
+.tbl_tr123 td { border:0; padding:0 0 0 0; vertical-align:top;}
+.tbl_tr123_ind td { border:0; padding:0 0 0 0; vertical-align:top;}
+.tr123 img { margin-top:9; }
+.tr123 ul { margin-top:0; margin-bottom:6; }
+.training { border:0; margin: 0 0 0 0; width:100%; }
+.training td { border:0; padding:0 0 0 0; vertical-align:middle; }
+.training td table {  margin:12 15 6 0; border-top:2px solid #6699FF; border-bottom:2px solid #6699FF; width:100%; }
+.training td table td { font-family: "Lucida Grande", "Lucida Sans", Verdana, sans-serif; font-size:9pt; vertical-align: top; border-bottom:1px solid #CCCCCC;  padding:2pt 6pt 1pt 6pt; }
+td.icons { vertical-align:top; }
+.training p { margin-right:0; }
+table.training_course { border:0; margin: 0 15 0 0;  width:98%;}
+.training_course td { border:0; padding:4 10 0 0; vertical-align:top; }
+.training_course th {  padding-left:0; vertical-align:middle; }
+
+.col2 td { width:auto; }
+.col3 td { width:auto; }
+.col4 td { width:auto; }
+.col5 td { width:auto; }
+.vc td { width:auto; }
+
+.excelCell { background-color:#C0C0C0; border-top:1px solid #FFFFFF; text-align:center; vertical-align:middle; padding:3 0 3 0;}
+ .vcfr, .cfr1, .cfr2, .cfr3, .cfr4, .cfr5 { margin:0 0 0 -1px; border-left:1px solid #FFFFFF; }
+table.vcfr td { border-bottom:1px solid #CCCCCC; width:auto; vertical-align:middle; padding:3 6 3 6;}
+table.cfr1 td { border-bottom:1px solid #CCCCCC;  width:100%; vertical-align:middle; padding:3 6 3 6;; }
+table.cfr2 td {  border-bottom:1px solid #CCCCCC; width:auto; vertical-align:middle; padding:3 6 3 6; }
+table.cfr3 td { border-bottom:1px solid #CCCCCC;  width:auto; vertical-align:middle; padding:3 6 3 6; }
+table.cfr4 td { border-bottom:1px solid #CCCCCC;  width:auto; vertical-align:middle; padding:3 6 3 6; }
+table.cfr5 td { border-bottom:1px solid #CCCCCC; width:auto; vertical-align:middle; padding:3 6 3 6; }
+table.functionRef { margin:12 0 15 0; border-top-width:0px; border-bottom-width:0px; width:100%; padding:0 0 0 0;}
+li table.functionRef {width:100%; margin:0 12 0 0;}
+td.xlcontainer { padding: 0 0 0 0; }
+
+td.term { width:auto; color:#000000; }
+/* td.definition { font-family: "Lucida Grande", "Lucida Sans", Verdana, sans-serif; font-size:8pt; } */
+
+table.quiztable { border:0; width:575; margin:0 0 0 0; padding:0 0 0 0; }
+table.quiztable td { border:0;}
+
+/*  TABLE STYLE FOR XL FORMULA TABLES TO REPLICATE ROW AND COL. HEADINGS */
+.xlrowcol 	{font-weight: bold; background-color: #C0C0C0; text-align: center;}
+
+/*  Heading styles  */
+
+h1	{font-size:14pt; color: #003399; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal; margin:0 80 4 10; padding:0 0 0 0;}
+h2	{font-size: 12pt; color: #003399; font-family: "Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal; margin-bottom:3px; margin-top:0px; }
+h2.qr { font-size: 12pt; color: #003399; font-family: "Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal; margin:18 0 3 0; padding-top:12px; border-top: 1px solid #CCCCCC; padding-right:0;}
+h3	{ font-size:11pt; color: #000000; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal; margin-top:6px; margin-bottom:3px; }
+h3.secttl	{ font-size:11pt; color: #006600; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal; margin-top:6px; margin-bottom:6px; }
+h4	{ font-size:10pt; color: #006600; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal;  margin-bottom:6px; margin-top:6pt;}
+h4.secttl	{ font-size:11pt; color: #000000; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal;  margin-bottom:6px; margin-top:6pt;}
+h5	{ font-size:11pt; color: #006600; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:bold;  margin-bottom:6px; margin-top:3px; }
+h5.secttl	{ font-size:10pt; color: #000000; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal;  margin-bottom:6px; margin-top:6px; }
+h6	{ font-size:9pt; color: #006600; font-family:"Trebuchet MS", "Lucida Grande", Verdana, sans-serif; font-weight:normal;  margin-bottom:6px; margin-top:3px; }
+.radio .ttlProc	{ color: #000000; font-weight:normal; cursor:pointer; margin:3pt 0 0pt 0pt;}
+
+/*  Heading 9,List Procedure Heading,lproch  */
+.lproch		{font-size: 110%; font-weight: bold; margin-top: 1.2em; }
+
+/*  Paragraph class styles  */
+
+.ac			{font-size: smaller; } 
+.alpha		{font-size: 110%; font-weight: bold; color: #000088; }
+.dt1		{ text-indent: -20px; margin-left: 20px;}
+.hang		{ text-indent: -10px; margin-left: 10px;}
+/*.l1			{font-size: 95%; font-weight: bold; }*/
+.bold			{ font-weight: bold; }
+.italic	{ font-style: italic; }
+.idef {  background-color:#DDEEFF; }
+.related p { margin-top:0; margin-bottom:2pt; }
+.radio p { margin-left:-10pt; }
+.summary { font-size:8pt; margin-right:0; }
+.question { color: #003399; margin-top:0; }
+.answer { padding-left:20; text-indent:-20; line-height:12pt;}
+//.answer { margin-left:20; }
+.pointer { cursor:pointer; line-height:12pt; }
+.allright p { margin-right:0; }
+.qrPage p { font-size:90%; }
+.qrPage li { font-size:90%; }
+//.training_course ul { font-size:90%; }
+.qrPage li p { font-size:100%; }
+.qrPage h2 { font-size:110%; }
+.qrPage .tip { font-size:100%; font-weight:normal; }
+.sig { font-style:italic; }
+
+/* Inline styles  -- mainly used with <SPAN> */
+.caption 	{font-size: 90%; padding-bottom:4px; } 
+.cmd { font-family:"Lucida Grande", "WingDings"; font-weight:normal;}
+.comment { color:#009933; }
+.term { color:#003399; cursor:pointer; }
+.spacer { width:.5em; }
+.emphasis { font-style:italic; }
+.email { color:#003399; }
+.web { color:#003399; }
+.ftp { color:#003399; }
+.pc90 { font-size:90%; }
+.super { vertical-align:super; font-size:85%; }
+.sub { vertical-align:sub; font-size:85%; height:8; }
+.xsltError { color:red; }
+.xsltWarn { color:orange; }
+.prevnext { cursor:pointer; }
+.radioans { vertical-align:top; margin:1 6 0 0; }
+
+/* images */
+img { border:0; margin-top:0px; margin-bottom:0; vertical-align:baseline; }
+.callout { text-indent: -18px; font-size:90%; margin:0 0 0 28;}
+.calloutlast { text-indent: -18px; font-size:90%; margin:0 0 16 28;}
+.callout img { margin-bottom:-1; }
+.figcap	{ margin:6 0 16 0;}
+.figcap_callout { margin:6 0 3 0;}
+
+/* alert styles */
+.note { font-weight:bold; color:#339999; margin-bottom:0pt; }
+.tip { font-weight:bold; color:#009933; margin-bottom:0pt; }
+.alert { margin:12pt 15pt 9pt 12pt;}
+.alert2 { margin:6pt 0pt 6pt 0;}
+.alert2 ul { margin-top:3pt;}
+ .ind .alert2 { margin:0 0 0 0;}
+.proc li .alert2 { margin:0 0 0 1pt;}
+ li .alert2 ul { margin-left:40px;}
+.alert p { margin:3pt 0 3pt 0; }
+.caution { border-top:1px solid #FF3300; border-bottom:1px solid #FF3300; padding:0 0 0 0; margin:-1px 0px 6px 20px; }
+.important { border-top:1px solid #003399; border-bottom:1px solid #003399; padding:0 0 0 0;  margin:-1px 0px 6px 20px; }
+.alertHeadImp {  padding:0 0 0 17; margin-left:-3; color:#FFFFFF; font-weight:bold; font-size:90%; text-align:left; height:14px; }
+.alertHeadCau { padding:0 0 0 22; margin-left:-3; color:#FFFFFF; font-weight:bold; font-size:90%; text-align:left; height:14px;}
+
+/*  spacing styles */
+
+.4		{line-height: 4pt;}
+.6		{line-height: 6pt;}
+.endblock	{line-height: 400px;}
+
+/* Expando styles */
+
+.expando { cursor:pointer; margin:0 15 0 0; } /*This works in IE Win */
+.exnode { color: #0000cc; }
+.exnest { color: black; }
+.expandoTable { border:0; padding:0 0 0 0; margin:12 0 0 0;}
+.expandoTable td { padding:1 0 1 0; border:0; }
+.solution table { margin:0 0 0 0; border:0; padding:0 0 0 0; width:100%; }
+.solution table td { margin:0 0 0 0; border:0px; padding:1 0 1 0; }
+.solution table td.arrow  { width:15; padding:3 0 0 0; border:0;}
+.expandoTable td.arrow  { width:15; padding:4 0 0 0; }
+.expandoTable td.arrow_ts  { width:15; padding:1 0 0 0; }
+ .showAllArrow { padding:0 4 0 0;}
+ td.showAllText { text-align:left;}
+
+/* Procedure styles */
+.expandoproc { cursor:pointer; margin:0 15 0 0; } 
+.expandoprocTable { border:0; padding:0 0 0 0; margin:-4 0 -2 0; }
+.expandoprocTable td { border:0; padding:0 0 0 0; }
+.expandoprocTable td.arrow  { width:15; padding:4 0 0 0; }
+div.hiddenproc { padding:0 0 1 0;  margin-left:15; }
+
+/* Div styles */
+div {margin:0 0 0 0; }
+.main {  position:absolute; left:0; top:0; width:100%;}
+.content {  margin:0 15 0 15; padding:0 0 0 0 ; }
+.coursecontent {  margin:0 15 0 15; padding:0 0 0 0 ; width:579px; }
+.header {  background-repeat:repeat-x; color:#003399; text-align:right; font-size:8pt; margin:0 0 4 0; padding:0 15px 0 0; height:18px;}
+.footer { margin:12 0 0 0; height:18px;}
+/*.alert { margin-right:10%; margin-top:1em; margin-bottom:1em; font-family:Arial; padding:0em 1em 0em 1em; border-top:1px solid #003399; border-bottom:1px solid #003399; background-color:#EEEEEE;}  This is the old style -- now deprecated */
+.def  { display:none; }
+.defdiv { visibility:hidden; position:absolute; width:20em; border: 1px solid #999999 ; cursor:default; z-Index:100; }
+.related { border-top:1px solid #FFCC00; margin-top:12pt; }
+.termdiv { font-size:8pt; color:#FFFFFF; background-repeat:repeat-x; height:16px; padding:.1em .5em .1em .5em; font-weight:bold; z-Index:101; }
+.termdefdiv { font-size:8pt; color:#000000; background-color:#E4EAF6 ; padding:.25em .5em .5em .5em; font-weight:normal; z-Index:102; }
+.title { border-bottom:1px solid #003399; margin-bottom:12px; margin:0 0 12 0; padding:0 15 0 0; }
+.ind { margin-left:15px; margin-bottom:0pt; }
+.ind2	{ margin-left:20px;}
+.proc	{ margin:0 15 0 -14;}
+.intro { margin-top:3px; margin-bottom:0px; }
+.ind .proc { margin-left:12; margin-top:9; margin-right:0; }
+.training_block { padding-left:10; }
+.training_block ul { margin-left:-15; }
+.ansYes { display:none; background-color:#CCFFFF;position:relative; left:0; width:225; border:1px solid #999999; padding:4 5 6 5; font-size:8pt; }
+.ansNo { display:none; background-color:#FFCCCC;position:relative; left:0;  width:225; border:1px solid #999999; padding:4 5 6 5; font-size:8pt; }
+.allright { margin-bottom:12pt; }
+.courseNav { position:relative; top:0; width:100%; font-size:8pt; margin:0 0 -12 0; padding:0 0 0 0; color:#003399; }
+.pficon { margin:5 0 0 5; font-size:8pt;color:#003399; }
+.seealso { border-bottom:1px solid #CCCCCC; padding-bottom:10; margin-bottom:5; }
+
+.bumper {  border-top:1px solid #FFFFFF; }
+.solution { margin:0 15 6 0; }
+
+.divShowHideAll { position:absolute; left:0;right:15; top:2.4em;}
+.showAll { border:0px; margin:0 0 0 0;  padding:0 0 6 0; cursor:pointer; width:auto; }
+.showAll td {padding:0 0 0 0; border:0px;}
+
+/* Courses */
+div.nav { position:absolute;left:0; top:0; width:185; padding:15 0 0 0;height:100%; background-color:#EEEEEE; border-right:1px solid #999999; font-size:8pt; z-Index:150; }
+table.nav { border:0; font-size:8pt; width:100%; margin:0 0 0 0; padding-left:0; }
+table.nav td.nav { cursor:pointer; font-size:8pt; padding:2 2 2 13; border:1px solid #EEEEEE; }
+table.nav td.navarr { cursor:pointer; font-size:8pt; border:0; padding:2 2 2 13; text-indent:-15; }
+table.nav td.navexp { padding-left:20; border:0; padding-top:0; }
+td.navexp div { display:none;}
+td.navexp td.nav { padding:2 2 2 2; }
+.pfprintbtn { display:none; width:750px; margin-top:12px; }
+.printonly { display: none; }
+
+td.q { color:#006600; width:10; padding-right:5;}
+td.q1 { margin-right:5; padding-right:0;}
+td.a { color:#006600; width:10; margin-bottom:12; padding-right:5;}
+
+div.coursepg { padding-bottom:12; display:none; width:564;  }
+div.feedbackpg { padding-bottom:12; display:none; width:564;  }
+div.qrPage { padding-bottom:12; display:none; width:564; }
+table.qrp1 { width:325; margin-bottom:18; border-right:1px solid #CCCCCC; margin:0 0 0 0; }
+table.qrp2 { width:325; margin-bottom:18; border-top:1px solid #CCCCCC; margin:0 0 0 0; border-right:1px solid #CCCCCC; }
+table.training_course td.qrptd1 { padding-right:0; padding-top:3; }
+table.training_course td.qrptd2 { padding-right:0;}
+table.training_course td.qrptd3 { vertical-align:middle; text-align:center; padding-right:0; padding-left:0; }
+table.training_course td.qrptd4 { margin-left:0; margin-right:0; padding-left:10; padding-right:0; width:239; }
+table.qrpQnA { margin-left:15; margin-right:0; width:220px;}
+
+/* ORK */
+
+table.roadmap {  margin:12 15 0 0; border-top:1px solid #6699FF; border-bottom:0; width:100%; }
+table.roadmap td.rm1 { width:25%; padding-left:1px; }
+table.roadmap td.rm2 { width:75%;  padding-left:0px; margin-right:0; padding-right:0;}
+
+/* Home Pages */
+
+.homepage p {margin:0 0 3 10; font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans", "Verdana, sans-serif";  font-size: 9pt; line-height: 11pt;}
+.homepage li { margin-top:0; }
+.homepage li p {margin-left:0pt; list-style-position:outside; }
+p.image { margin-top:20px; margin-bottom:10px; margin-left:10px; }
+.homepage table { border:0; margin-top:0; width:100%; padding-left:0; }
+.homepage h2 { font-size:13pt; color: #0099ff; font-weight:normal; margin:10 0 2 2; }
+.head_image h2 { color:#333333; margin:0 0 0 0; font-size:15pt; }
+.head_image { text-align:center; vertical-align:bottom; }
+
+
