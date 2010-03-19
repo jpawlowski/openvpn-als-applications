@@ -1,4 +1,4 @@
-<bundle version="2.0.1"
+<bundle version="2.0.3"
 		requiredHostVersion="0.9.0"
 		type="executable"
 		id="adito-application-rdp-xplatform-embedded"
@@ -7,9 +7,9 @@
 		order="99999"
 		productURL="http://www.microsoft.com/">
 		
-	<description>Execute embedded RDP Client on Linux, Mac and Windows</description>
+	<description>Execute embedded RDP Client on Linux, Mac and Windows. SSO.</description>
 
-	<extension type="executable" extension="adito-application-rdp-xplatform-embedded" name="Embedded RDP client for Linux, Mac and Windows" smallIcon="xplatformrdp16x16.png" largeIcon="xplatformrdp32x32.png">
+	<extension type="executable" extension="adito-application-rdp-xplatform-embedded" name="Embedded RDP client for Linux, Mac and Windows2" smallIcon="xplatformrdp16x16.png" largeIcon="xplatformrdp32x32.png">
 		
 		<description>Execute embedded RDP Client on Linux, Mac and Windows</description>
 		
@@ -755,17 +755,19 @@
 			<file os="Linux" exec="true">linux/rdesktop</file>
 			<file os="MAC OS X">Default-mac.rdp</file>
 			<file os="MAC OS X">Default-mac-fullscreen.rdp</file>
-			<file os="Windows">Default-win.rdp</file>
+			<file os="Windows">windows/Default-win.rdp</file>
+			<file os="Windows">windows/cryptRDP5.exe</file>
+			<file os="Windows">windows/launch.cmd</file>
 		</files>
-                <if os="MAC OS X">
+        <if os="MAC OS X">
 			<replacements templateFile="Default-mac-fullscreen.rdp" parameter="file0" encoding="US-ASCII" />
 			<replacements templateFile="Default-mac.rdp" parameter="file1" encoding="US-ASCII" />
 		</if>
-                <if os="Windows">		
-		    <replacements templateFile="Default-win.rdp" parameter="file" encoding="US-ASCII"/>
+        <if os="Windows">		
+		    <replacements templateFile="windows/Default-win.rdp" parameter="file" encoding="US-ASCII"/>
 		</if>
 
-		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" singleConnection="false" usePreferredPort="false"/>
+		<tunnel name="rdp" hostname="${shortcut:hostname}" port="${shortcut:port}" singleConnection="false" usePreferredPort="false" />
 		<executable>
                     <if os="Linux">
 	                <program>linux/rdesktop</program>
@@ -845,15 +847,16 @@
 			</if>
 		     </if>
 	            <if os="Windows">
-	                <program>mstsc.exe</program>
-			<arg>${param:file}</arg>
-                        <arg>/v:</arg>
+	                <program>windows\launch.cmd</program>
+						<arg>${param:file}</arg>
+						<arg>${param:password}</arg>
+						<arg>${client:installDir}/windows/cryptRDP5.exe</arg>
                         <arg>${tunnel:rdp.hostname}:${tunnel:rdp.port}</arg>
-                        <arg>/w:${param:width}</arg>
-                        <arg>/h:${param:height}</arg>
+                        <arg>${param:width}</arg>
+                        <arg>${param:height}</arg>
                         <if parameter="screenmode" value="0">
                             <arg>/f</arg>
-                        </if>  			
+                        </if>  	
 	            </if>
 	            <if os="MAC OS X">
                 	<program>macosx/Remote Desktop Connection.app/Contents/MacOS/Remote Desktop Connection</program>
